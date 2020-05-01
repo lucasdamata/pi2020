@@ -1,3 +1,25 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>   
+            <img alt="logo" id="header_logo" height="40" src="assets/images/logo.png">
+      
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="true">
+
+            <ion-item routerLink="/login">Outro Problema</ion-item>
+            <ion-item routerLink="/check-list">item...</ion-item>
+            <ion-item routerLink="/diario-bordo">item...</ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      
+        
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>
