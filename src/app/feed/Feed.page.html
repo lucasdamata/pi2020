@@ -1,16 +1,17 @@
-<ion-header background="green">
-  <ion-toolbar >
+<ion-header >
+  <ion-toolbar color="success" >
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+      <ion-badge color="primary">{{ today | date: 'dd/MM/yyyy HH:mm' }}</ion-badge>
     </ion-buttons>
-    
-    <img alt="logo" class="header_logo" height="50" src="assets/images/logo.png">
+    <ion-buttons slot="primary">
+    </ion-buttons>
+    <ion-title>Bevap</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
  
-
 
   <ion-card>
     <img src="../../assets/images/cupim.jpg" />
@@ -25,8 +26,6 @@
       <ion-button  routerLink="/detalhes">detalhes</ion-button>
     </ion-list>
   </ion-card>
-
-
 
   
 </ion-content>

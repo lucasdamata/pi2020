@@ -1,20 +1,31 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="success" >
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Registros
-    </ion-title>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+    <ion-title>Catálogo</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  
+  <ion-searchbar placeholder="Pesquisar praga" showCancelButton="always" animated></ion-searchbar>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-card *ngFor="let item of pragas">
+    <img src="{{item.img}}" />
+    <ion-card-header>
+      <ion-card-title>{{item.nome}}</ion-card-title>
+      <label for="">Nivel de ameça:</label>
+      <ion-card-subtitle>{{item.nivel}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{item.combate}}
+    </ion-card-content>
+
+  </ion-card>
+
+
 </ion-content>
