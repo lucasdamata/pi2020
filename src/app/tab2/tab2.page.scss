@@ -1,0 +1,16 @@
+.header_logo{
+width: auto;
+margin: auto;
+display: block;
+}
+ion-toolbar{
+    --ion-background-color:rgb(99, 241, 111);
+}
+ion-button{
+    --ripple-color:black;
+}
+.botao:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
