@@ -3,10 +3,10 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FeedPage } from './Feed.page';
+import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { FeedPageRoutingModule } from './Feed-routing.module';
+import { Tab2PageRoutingModule } from './tab2-routing.module';
 
 @NgModule({
   imports: [
@@ -14,8 +14,8 @@ import { FeedPageRoutingModule } from './Feed-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    FeedPageRoutingModule
+    Tab2PageRoutingModule
   ],
-  declarations: [FeedPage]
+  declarations: [Tab2Page]
 })
-export class FeedPageModule {}
+export class Tab2PageModule {}
