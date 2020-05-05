@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="success" >
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+    <ion-title>Identificar Praga</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+ <ion-item>
+  <ion-label position="floating">Funcionário</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label position="floating">Praga</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label>Fazenda</ion-label>
+  <ion-select value="brown" okText="salvar" cancelText="fechar">
+    <ion-select-option value="brown">Fazenda</ion-select-option>
+    <ion-select-option value="blonde">Fazenda 2</ion-select-option>
+    <ion-select-option value="black">Fazenda 3</ion-select-option>
+    <ion-select-option value="red">Fazenda 4</ion-select-option>
+  </ion-select>
+</ion-item>
+
+
+
+<ion-item>
+  <ion-label position="floating">Descrição</ion-label>
+  <ion-textarea></ion-textarea>
+</ion-item>
+
+
+  <ion-button color="success">Câmera</ion-button>
+  
+  <ion-button color="success" >
+  <ion-icon name="location-sharp"></ion-icon>
+  selecionar local
+  </ion-button>
+
+
+
+
+
+</ion-content>

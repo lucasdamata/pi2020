@@ -1,0 +1,31 @@
+<ion-header >
+  <ion-toolbar color="success" >
+    <ion-buttons slot="start">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+      <ion-badge color="primary">{{ today | date: 'dd/MM/yyyy HH:mm' }}</ion-badge>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+    </ion-buttons>
+    <ion-title>Bevap</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+
+  <ion-card>
+    <img src="../../assets/images/cupim.jpg" />
+    <ion-card-header>
+    
+      <ion-card-title>Cupins</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      São insetos sociais que vivem em colônias organizadas. Perdas ocorrem com falhas na brotação das soqueiras e redução da longevidade do canavial. A maioria das espécies de cupins não é agressiva à cultura, ao contrário é benéfica. Podem reduzir em até 10 t de cana/ha/ano, além de ocasionarem redução da longevidade do canavial.
+    </ion-card-content>
+    <ion-list>
+      <ion-button  routerLink="/detalhes">detalhes</ion-button>
+    </ion-list>
+  </ion-card>
+
+  
+</ion-content>
