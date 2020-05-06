@@ -1,0 +1,29 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-header>
+        <ion-toolbar>   
+            <img alt="logo" id="header_logo" height="40" src="assets/images/logo.png">
+      
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="true">
+
+            <ion-item >Identificar outros problemas</ion-item>
+            <ion-item routerLink="/">Maquinário</ion-item>
+            <ion-item routerLink="/">Irrigação</ion-item>
+            <ion-item routerLink="/">Adubação</ion-item>
+            <ion-item routerLink="/">Produção</ion-item>
+            <ion-item routerLink="/">Estoque</ion-item>
+            <ion-item routerLink="/">Funcionários</ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      
+        
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
