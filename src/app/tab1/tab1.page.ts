@@ -10,9 +10,9 @@ export class Tab1Page {
   alertController: any;
   public pragas: Array<object> = [];
   
-
  
   constructor() {
+    
 
     // array estático, será substituido por consultas em banco
      this.pragas = [
@@ -66,6 +66,18 @@ export class Tab1Page {
          "obs":"dificilmente combatida"
        },
      ]
+
    }
+   
+   /*
+   Filter(ev:any){
+    const val = ev.target.value;
+    if(val && val.trim() !=''){
+      this.pragas = this.pragas.filter((item)=>{
+        return (item.nome.toLowerCase().indexOf(val.toLowerCase())>-1);
+      })
+    }
+   }
+*/
 
 }

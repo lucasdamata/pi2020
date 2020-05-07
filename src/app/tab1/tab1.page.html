@@ -7,8 +7,9 @@
     </ion-buttons>
     <ion-title>Identificar Praga</ion-title>
   </ion-toolbar>
+ 
+  <ion-searchbar  placeholder="Pesquisar praga" showCancelButton="always" animated ></ion-searchbar>
 
-  <ion-searchbar  placeholder="Pesquisar praga" showCancelButton="always" animated></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -17,18 +18,6 @@
     <img src="{{item.img}}" />
     <ion-card-header>
       <ion-card-title>{{item.nome}}</ion-card-title>
-      <label for="">Nivel de ameça:</label>
-      <ion-segment (ionChange)="segmentChanged($event)">
-        <ion-segment-button >
-          <ion-label>leve</ion-label>
-        </ion-segment-button>
-        <ion-segment-button>
-          <ion-label color="secondary">moderada</ion-label>
-        </ion-segment-button>
-        <ion-segment-button >
-          <ion-label color="danger">grave</ion-label>
-        </ion-segment-button>
-      </ion-segment>
       
     </ion-card-header>
   
@@ -36,19 +25,11 @@
       {{item.combate}}
     </ion-card-content>
 
-    <ion-button color="success" (click) ="presentAlert()">Câmera</ion-button>
-    
-    <ion-button color="success" >
-    <ion-icon name="location-sharp"></ion-icon>
-    selecionar local
-    </ion-button>
-
-    <ion-button color="success" (click) ="presentAlert()">Enviar aviso</ion-button>
+    <ion-button color="success" routerLink="/alerta"  expand="block" fill="outline">Gerar alerta</ion-button>
 
   </ion-card>
-
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button routerLink="/detalhes"  color="success">
+    <ion-fab-button routerLink="/tabs/tab3"  color="success">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

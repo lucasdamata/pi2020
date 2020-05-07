@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+
+    </ion-buttons>
+    <ion-title>Gerar Alerta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Funcionário</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fazenda</ion-label>
+      <ion-select value="brown" okText="salvar" cancelText="fechar">
+        <ion-select-option value="brown">Fazenda</ion-select-option>
+        <ion-select-option value="blonde">Fazenda 2</ion-select-option>
+        <ion-select-option value="black">Fazenda 3</ion-select-option>
+        <ion-select-option value="red">Fazenda 4</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+  
+    <ion-item>
+      <ion-label position="floating">Observação</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+
+
+    <ion-button color="success" (click)="presentAlert()">Câmera</ion-button>
+
+  
+    <ion-button color="success">
+      <ion-icon name="location-sharp"></ion-icon>
+      selecionar local
+    </ion-button>
+
+
+  <ion-item>
+    <label for="">Nivel de insfestação</label>
+  </ion-item>
+  <ion-item>
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button >
+        <ion-label>leve</ion-label>
+      </ion-segment-button>
+      <ion-segment-button>
+        <ion-label color="secondary">moderada</ion-label>
+      </ion-segment-button>
+      <ion-segment-button >
+        <ion-label color="danger">grave</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+  <ion-button color="success" >Salvar</ion-button>
+  
+</ion-content>
