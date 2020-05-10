@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-tab3',
@@ -12,7 +13,7 @@ export class Tab3Page {
 
   
 
-  constructor() {
+  constructor(public photoService: PhotoService) {
 
 
    // array estático, será substituido por consultas em banco
