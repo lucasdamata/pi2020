@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-tab1',
@@ -8,17 +9,18 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab1Page {
   alertController: any;
+
   public pragas: Array<object> = [];
+  public allPragas: Array<object> = [];
   
  
   constructor() {
     
-
     // array estático, será substituido por consultas em banco
      this.pragas = [
  
        {
-         "nome": "Diatraea saccharalis - Broca da Cana",
+         "nome": "Broca da Cana - Diatraea saccharalis",
          "img": "https://www.agrolink.com.br/upload/problemas/Diatraea_saccharalis86.jpg",
          "nivel": " GRAVE",
          "combate": " liberação de parasitóides como a Cotesia flavipes. Não adotar medidas que causem desequilíbrio nas populações de parasitóides e predadores, sendo necessário racionalizar o uso de produtos químicos.",
@@ -26,7 +28,7 @@ export class Tab1Page {
          "obs":" dificilmente combatida"
        },
        {
-         "nome": "Mahanarva fimbriolata - Cigarrinha das Raízes",
+         "nome": "Cigarrinha das Raízes - Mahanarva fimbriolata ",
          "img": "https://amtecagr.files.wordpress.com/2016/01/cigarrinha-das-raizes-cana-mahanarva-fimbriolata.jpg?w=1000",
          "nivel": "Médio",
          "combate": "aplicação do fungo Metarhizium anisopliae quando forem encontradas populações acima de 3 ninfas por metro linear.",
@@ -67,17 +69,20 @@ export class Tab1Page {
        },
      ]
 
-   }
-   
-   /*
-   Filter(ev:any){
-    const val = ev.target.value;
-    if(val && val.trim() !=''){
-      this.pragas = this.pragas.filter((item)=>{
-        return (item.nome.toLowerCase().indexOf(val.toLowerCase())>-1);
-      })
-    }
-   }
-*/
+     this.allPragas = this.pragas;
 
+   }
+
+   onSearchTerm(ev: CustomEvent) {
+    this.pragas = this.allPragas;
+    const val = ev.detail.value;
+
+    if (val && val.trim() !== '') {
+      this.pragas = this.pragas.filter(term => {
+        return term.nome.toLowerCase().indexOf(val.trim().toLowerCase()) > -1;
+      });
+    }
+  }
+  
 }
+  
