@@ -73,7 +73,7 @@ export class Tab1Page {
 
    }
 
-   onSearchTerm(ev: CustomEvent) {
+   /*onSearchTerm(ev: CustomEvent) {
     this.pragas = this.allPragas;
     const val = ev.detail.value;
 
@@ -82,7 +82,7 @@ export class Tab1Page {
         return term.nome.toLowerCase().indexOf(val.trim().toLowerCase()) > -1;
       });
     }
-  }
+  }*/
   
 }
   
