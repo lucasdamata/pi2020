@@ -10,10 +10,9 @@ import { isNgTemplate } from '@angular/compiler';
 export class Tab1Page {
   alertController: any;
 
-  public pragas: Array<object> = [];
-  public allPragas: Array<object> = [];
+  public pragas: Array<any> = [];
+  public allPragas: Array<any> = [];
   
- 
   constructor() {
     
     // array estático, será substituido por consultas em banco
@@ -70,10 +69,11 @@ export class Tab1Page {
      ]
 
      this.allPragas = this.pragas;
-
    }
 
-   /*onSearchTerm(ev: CustomEvent) {
+
+   
+   onSearchTerm(ev: CustomEvent) {
     this.pragas = this.allPragas;
     const val = ev.detail.value;
 
@@ -82,7 +82,7 @@ export class Tab1Page {
         return term.nome.toLowerCase().indexOf(val.trim().toLowerCase()) > -1;
       });
     }
-  }*/
+  }
   
 }
   

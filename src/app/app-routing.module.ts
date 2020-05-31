@@ -13,7 +13,11 @@ const routes: Routes = [
   {
     path: 'alerta',
     loadChildren: () => import('./alerta/alerta.module').then( m => m.AlertaPageModule)
+  },  {
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   }
+
 ];
 @NgModule({
   imports: [

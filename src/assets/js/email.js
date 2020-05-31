@@ -10,7 +10,6 @@
           pass: "ddgl9900"
 
       }
-
   });
 
   transporter.sendMail({
