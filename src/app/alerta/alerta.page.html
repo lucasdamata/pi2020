@@ -9,32 +9,39 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="alertForm" (ngSubimit) = "submit()">
+  <form [formGroup]="alertForm" (ngSubmit) = "send()">
     <ion-list>
+
       <ion-item>
         <ion-label position="floating">Funcionário: </ion-label>
         <ion-input formControlName="funcionario"></ion-input>
       </ion-item>
+
       <ion-item>
         <ion-label position="floating">Nível de infestação: </ion-label>
         <ion-input formControlName="infestacao"></ion-input>
       </ion-item>
+
       <ion-item>
         <ion-label position="stacked">Localização: </ion-label>
         <ion-input formControlName="local" placeholder="Latidude e Longitude:"></ion-input>
       </ion-item>
+
       <ion-button color="success" routerLink="/map">
         <ion-icon name="location-sharp"></ion-icon>
         selecionar local
       </ion-button>
+      
       <ion-item>
         <ion-label position="stacked">Observações: </ion-label>
         <ion-textarea formControlName="observacao"></ion-textarea>
       </ion-item>
+
       <ion-button color="success" [disabled]="!alertForm.valid" type="submit" expand="block">
         Enviar
         <ion-icon slot="end" name="create"></ion-icon>
       </ion-button>
+
     </ion-list>
     
   </form>

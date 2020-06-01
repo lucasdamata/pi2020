@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
+import {EmailComposer} from '@ionic-native/email-composer/ngx';
+
 
 
 @Component({
@@ -52,12 +54,23 @@ export class AlertaPage implements OnInit {
     observacao: ['']
   });
 
-  constructor(public photoService: PhotoService, private formBuilder: FormBuilder) { }
+  constructor(public photoService: PhotoService, private formBuilder: FormBuilder, private emailComposer: EmailComposer) { }
   
   public submit(){
-    console.log(this.alertForm);
+    console.log(this.alertForm.value);
   }
   
+  public send(){
+    let email = {
+      to: 'lucasmsilva@unipam.edu.br',
+      cc: 'pi.d2gl@gmail.com',
+      attachments: [],
+      subject: 'Alerta',
+      body: 'Funcionário: '+ this.alertForm.value.funcionario,
+      isHtml: true
+    };
+    this.emailComposer.open(email);
+  }
 
   ngOnInit() {
   }
