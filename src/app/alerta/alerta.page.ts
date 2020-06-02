@@ -46,6 +46,10 @@ export class AlertaPage implements OnInit {
       {type: 'maxlength', message: 'Decrição para melhor conhecimento'}
     ]
   };
+  
+  
+  
+  
 
   alertForm = this.formBuilder.group({
     funcionario: [''],
@@ -59,6 +63,8 @@ export class AlertaPage implements OnInit {
   public submit(){
     console.log(this.alertForm.value);
   }
+
+  public estilo = 'style="color:red"';
   
   public send(){
     let email = {
@@ -66,7 +72,7 @@ export class AlertaPage implements OnInit {
       cc: 'pi.d2gl@gmail.com',
       attachments: [],
       subject: 'Alerta',
-      body: 'Funcionário: '+ this.alertForm.value.funcionario,
+      body: '<b><h1>Alerta</h1><br>'+'Funcionário: '+ this.alertForm.value.funcionario + '<br>Nivel de infertação: '+ this.alertForm.value.infestacao + '<br>Localização: ' + this.alertForm.value.local + '<br>Observações: ' + this.alertForm.value.observacao,
       isHtml: true
     };
     this.emailComposer.open(email);
