@@ -8,7 +8,7 @@
     <ion-title>Identificar Praga</ion-title>
   </ion-toolbar>
  
-  <ion-searchbar  placeholder="Pesquisar praga" showCancelButton="always" animated ></ion-searchbar>
+  <ion-searchbar  placeholder="Pesquisar praga" showCancelButton="always" animated (ionChange)="onSearchTerm($event)" ></ion-searchbar>
 
 </ion-header>
 

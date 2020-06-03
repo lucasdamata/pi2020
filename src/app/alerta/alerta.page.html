@@ -9,33 +9,45 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Funcionário</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Fazenda</ion-label>
-      <ion-select value="brown" okText="salvar" cancelText="fechar">
-        <ion-select-option value="brown">Fazenda</ion-select-option>
-        <ion-select-option value="blonde">Fazenda 2</ion-select-option>
-        <ion-select-option value="black">Fazenda 3</ion-select-option>
-        <ion-select-option value="red">Fazenda 4</ion-select-option>
-      </ion-select>
-    </ion-item>
+  <form [formGroup]="alertForm" (ngSubmit) = "send()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Funcionário: </ion-label>
+        <ion-input formControlName="funcionario"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Nível de infestação: </ion-label>
+        <ion-input formControlName="infestacao"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Localização: </ion-label>
+        <ion-input formControlName="local" placeholder="Latidude e Longitude:"></ion-input>
+      </ion-item>
+
+      <ion-button color="success" routerLink="/map">
+        <ion-icon name="location-sharp"></ion-icon>
+        selecionar local
+      </ion-button>
+      
+      <ion-item>
+        <ion-label position="stacked">Observações: </ion-label>
+        <ion-textarea formControlName="observacao"></ion-textarea>
+      </ion-item>
+
+      <ion-button color="success" [disabled]="!alertForm.valid" type="submit" expand="block">
+        Enviar
+        <ion-icon slot="end" name="create"></ion-icon>
+      </ion-button>
+
+    </ion-list>
     
-  
-    <ion-item>
-      <ion-label position="floating">Observação</ion-label>
-      <ion-textarea></ion-textarea>
-    </ion-item>
-  </ion-list>
-
-
-
-    <ion-button color="success" (click)="presentAlert()">Câmera</ion-button>
+  </form>
 
   
+<<<<<<< HEAD
     <ion-button color="success" routerLink="/localizacao">
       <ion-icon name="location-sharp"></ion-icon>
       selecionar local
@@ -59,5 +71,8 @@
     </ion-segment>
   </ion-item>
   <ion-button color="success" >Salvar</ion-button>
+=======
+>>>>>>> origin/master
   
 </ion-content>
+

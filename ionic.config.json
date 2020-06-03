@@ -1,7 +1,8 @@
 {
   "name": "pi2020",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
