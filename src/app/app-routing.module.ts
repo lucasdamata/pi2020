@@ -14,8 +14,13 @@ const routes: Routes = [
     path: 'alerta',
     loadChildren: () => import('./alerta/alerta.module').then( m => m.AlertaPageModule)
   },  {
+<<<<<<< HEAD
+    path: 'localizacao',
+    loadChildren: () => import('./localizacao/localizacao.module').then( m => m.LocalizacaoPageModule)
+=======
     path: 'map',
     loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
+>>>>>>> origin/master
   }
 
 ];
