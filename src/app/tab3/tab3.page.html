@@ -9,37 +9,37 @@
 
 <ion-content [fullscreen]="true">
   <ion-item>
-    <ion-label position="floating">Funcionário</ion-label>
+    <ion-label position="floating">Nome</ion-label>
     <ion-input></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Praga</ion-label>
+    <ion-label position="floating">Imagem</ion-label>
     <ion-input></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label>Fazenda</ion-label>
-    <ion-select value="brown" okText="salvar" cancelText="fechar">
-      <ion-select-option value="brown">Fazenda</ion-select-option>
-      <ion-select-option value="blonde">Fazenda 2</ion-select-option>
-      <ion-select-option value="black">Fazenda 3</ion-select-option>
-      <ion-select-option value="red">Fazenda 4</ion-select-option>
-    </ion-select>
-  </ion-item>
-  
-  
-  
-  <ion-item>
-    <ion-label position="floating">Descrição</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
-  
-  
-    <ion-button color="success" (click)="photoService.addNewToGallery()">Câmera</ion-button>
-    
-    <ion-button color="success" routerLink="/map">
+  <ion-button color="success" (click)="photoService.addNewToGallery()">Câmera</ion-button>
+  <ion-button color="success" routerLink="/map">
+      
     <ion-icon name="location-sharp"></ion-icon>
     selecionar local
     </ion-button>
+  <ion-item>
+    <ion-label position="floating">Nivel</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Infestação</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Observação</ion-label>
+    <ion-textarea></ion-textarea>
+  </ion-item>
+  
+  <ion-button color="success" >ENVIAR</ion-button> <br>
+    
+    
+    
+    
  
     <ion-content>
       <ion-grid >
