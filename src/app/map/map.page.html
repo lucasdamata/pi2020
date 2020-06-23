@@ -1,13 +1,18 @@
+
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
-      
     </ion-buttons>
-    <ion-title>mapa</ion-title>
+    <ion-title>
+      Mapa
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div #map class="map"></div>
+<ion-content padding>
+  <ion-button>Salvar àrea infectada</ion-button>
+  <ion-button ion-button (click)="onButtonClick()">Meu Local</ion-button>
+  <p>Selecione o local de infestação</p>
+  <div id="map_canvas"></div>
 </ion-content>
