@@ -14,18 +14,15 @@ export class MapPage implements OnInit {
   loading: any;
   
   GORYOKAKU_POINTS: ILatLng[] = [
-    {lat: 41.79883,           lng: 140.75675},
-    {lat: 41.799240000000005, lng: 140.75875000000002},
-    {lat: 41.797650000000004, lng: 140.75905},
-    {lat: 41.79637,           lng: 140.76018000000002},
-    {lat: 41.79567,           lng: 140.75845},
-    {lat: 41.794470000000004, lng: 140.75714000000002},
-    {lat: 41.795010000000005, lng: 140.75611},
-    {lat: 41.79477000000001,  lng: 140.75484},
-    {lat: 41.79576,           lng: 140.75475},
-    {lat: 41.796150000000004, lng: 140.75364000000002},
-    {lat: 41.79744,           lng: 140.75454000000002},
-    {lat: 41.79909000000001,  lng: 140.75465}
+    {lat: -18.5872582,           lng: -46.514674899999996},
+    {lat: -18.5872583,           lng: -46.514674899999996},
+    {lat: -18.5872584,           lng: -46.514674899999996},
+    {lat: -18.5872585,           lng: -46.514674899999996},
+    {lat: -18.5872582,           lng: -46.514674899999996},
+    {lat: -18.5872582,           lng: -46.514674899999996},
+    {lat: -18.5872582,           lng: -46.514674899999996},
+    
+
   ];
 
   constructor(private platform: Platform,public loadingCtrl: LoadingController,public toastCtrl: ToastController) { }
@@ -43,6 +40,7 @@ export class MapPage implements OnInit {
         target: this.GORYOKAKU_POINTS
       }
     });
+
 
     let polygon: Polygon = this.map.addPolygonSync({
       'points': this.GORYOKAKU_POINTS,
@@ -74,29 +72,29 @@ export class MapPage implements OnInit {
     });
     await this.loading.present();
 
-    // Get the location of you
+    // pegar minha localização
     this.map.getMyLocation().then((location: MyLocation) => {
       this.loading.dismiss();
       console.log(JSON.stringify(location, null ,2));
 
-      // Move the map camera to the location with animation
+      // movendo o mapa
       this.map.animateCamera({
         target: location.latLng,
         zoom: 17,
         tilt: 30
       });
 
-      // add a marker
+      // adicionando marcador
       let marker: Marker = this.map.addMarkerSync({
         title: 'Essa é sua localização aproximada',
         position: location.latLng,
         animation: GoogleMapsAnimation.BOUNCE
       });
 
-      // show the infoWindow
+      // mostrar a janela
       marker.showInfoWindow();
 
-      // If clicked it, display the alert
+      // mostrar mapa
       marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
         this.showToast('clicked!');
       });
