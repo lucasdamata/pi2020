@@ -18,24 +18,30 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Nível de infestação: </ion-label>
-        <ion-input formControlName="infestacao"></ion-input>
+        <ion-label position="stacked">Observações: </ion-label>
+        <ion-textarea formControlName="observacao"></ion-textarea>
       </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked">Localização: </ion-label>
-        <ion-input formControlName="local" placeholder="Latidude e Longitude:"></ion-input>
-      </ion-item>
+      <div class="prioridade">
+        <label >Prioridade:</label>
+        <ion-segment>
+          <ion-segment-button value="baixa">
+            <ion-label color="primary">baixa</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="média">
+            <ion-label>média</ion-label>
+          </ion-segment-button>
+          <ion-segment-button  color="danger" value="alta">
+            <ion-label color="danger">alta</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
 
-      <ion-button color="success" routerLink="/map">
+      <ion-button color="success" expand="block" routerLink="/map">
         <ion-icon name="location-sharp"></ion-icon>
         selecionar local
       </ion-button>
       
-      <ion-item>
-        <ion-label position="stacked">Observações: </ion-label>
-        <ion-textarea formControlName="observacao"></ion-textarea>
-      </ion-item>
 
       <ion-button color="success" [disabled]="!alertForm.valid" type="submit" expand="block">
         Enviar

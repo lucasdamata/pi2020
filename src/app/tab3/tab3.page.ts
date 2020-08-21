@@ -15,7 +15,6 @@ export class Tab3Page {
 
   constructor(public photoService: PhotoService) {
 
-
    // array estático, será substituido por consultas em banco
     this.pragas = [
 
@@ -69,5 +68,6 @@ export class Tab3Page {
       },
     ]
   }
+
  
 }
