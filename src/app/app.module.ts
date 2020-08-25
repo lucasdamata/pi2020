@@ -11,10 +11,8 @@ import { AppComponent } from './app.component';
 import {AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import { from } from 'rxjs';
 
-
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +21,7 @@ import { from } from 'rxjs';
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
   ],
