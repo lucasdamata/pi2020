@@ -13,20 +13,36 @@ export class Tab1Page {
   alertController: any;
 
   public pragas: any;
-  public allPragas: Array<any> = [];
- 
+  public pragasSearch: Array<{id: any,nome: any, img: String, combate: String}>;
+  public pragasAll: Array<{id: any,nome: any, img: String, combate: String}>;
+
   
-  constructor(public servidor: ServidorService) {}
+  constructor(public servidor: ServidorService) {
+   
+  }
 
   async ngOnInit() {
     this.pragas = await this.showData();
+    this.pragasSearch= [];
   }
 
   
    showData(){
     this.servidor.getData()
     .subscribe(
-      data => this.pragas = data,
+      data => {
+        
+        this.pragas = data;
+        for(let i =0; i < data.length; i++ ){
+          this.pragasSearch.push({
+            id: data[i]["id"],
+            nome: data[i]["nome"],
+            img: data[i]["img"],
+            combate: data[i]["combate"]
+          });
+          this.pragasAll = this.pragasSearch;
+        }  
+      },
       err => console.log(err)
     );
    }
@@ -35,9 +51,11 @@ export class Tab1Page {
     const val = ev.detail.value;
 
     if (val && val.trim() !== '') {
-      this.pragas = this.pragas.filter(term => {
+      this.pragasSearch = this.pragasAll.filter(term => {
         return term.nome.toLowerCase().indexOf(val.trim().toLowerCase()) > -1;
-      });
+      })
+    }else{
+      this.pragasSearch = this.pragasAll;
     }
   }
   

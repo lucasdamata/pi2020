@@ -16,14 +16,14 @@
 <ion-content [fullscreen]="true">
 
 
-  <ion-card *ngFor="let item of pragas">
+  <ion-card *ngFor="let item of pragasSearch">
     <img src="{{item.img}}" />
     <ion-card-header>
       <ion-card-title><u>{{item.nome}}</u></ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
-      {{item.descricao}}
+      {{item.combate}}
     </ion-card-content>
     <ion-button color="success" routerLink="/alerta" expand="block" fill="outline">Gerar alerta</ion-button>
   </ion-card>
