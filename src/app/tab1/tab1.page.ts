@@ -33,13 +33,17 @@ export class Tab1Page {
       data => {
         
         this.pragas = data;
-        for(let i =0; i < data.length; i++ ){
+        let tamanho = Object.keys(data).length;
+        for(let i=0; i < tamanho; i++ ){
           this.pragasSearch.push({
             id: data[i]["id"],
             nome: data[i]["nome"],
             img: data[i]["img"],
             combate: data[i]["combate"]
           });
+        
+ 
+      
           this.pragasAll = this.pragasSearch;
         }  
       },
