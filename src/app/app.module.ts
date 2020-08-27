@@ -13,6 +13,10 @@ import { environment } from 'src/environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 import { HttpClientModule } from '@angular/common/http';
+import { NavController, NavParams } from '@ionic/angular';
+import { DetalhesPage } from './detalhes/detalhes.page';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    NavParams,
+    DetalhesPage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
