@@ -4,10 +4,9 @@
       <ion-menu-button auto-hide="false"></ion-menu-button>
      
     </ion-buttons>
-    <ion-chip>
-      <ion-label>{{ today | date: 'dd/MM HH:mm' }}</ion-label>
-    </ion-chip>
+    
     <ion-buttons slot="primary">
+      {{ today | date: 'dd/MM HH:mm' }}
     </ion-buttons>
     <ion-title>Bevap</ion-title>
   </ion-toolbar>

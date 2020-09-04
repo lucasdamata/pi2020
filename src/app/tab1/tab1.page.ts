@@ -5,7 +5,7 @@ import { NavController } from '@ionic/angular';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 import {ServidorService} from '../services/servidor.service';
-import { DetalhesPage } from '../detalhes/detalhes.page';
+
 
 @Component({
   selector: 'app-tab1',
@@ -53,13 +53,9 @@ export class Tab1Page {
           });
         
           this.pragasAll = this.pragasSearch;
-        }  
-      },
-      err => console.log(err)
+        } }, err => console.log(err)
     );
    }
-
-
 //pagina de detalhes
 detalhe(praga:any) {
   let navigationExtras: NavigationExtras = {
@@ -68,10 +64,6 @@ detalhe(praga:any) {
     }
   };
   this.router.navigate(['detalhes'], navigationExtras);
-
-  //this.router.navigate(['../detalhes', dados]);
-
-
 }
 
 //barra de pesquisa
