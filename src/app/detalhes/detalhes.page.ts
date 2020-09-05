@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 import { NavController, NavParams } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 
 
@@ -19,7 +20,8 @@ export class DetalhesPage implements OnInit {
     public photoService: PhotoService,
     public route: ActivatedRoute,
     public router: Router,
-    public navParams: NavParams ) {
+    public navParams: NavParams,
+    public loadingController: LoadingController ) {
 
       this.praga = this.route.queryParams.subscribe(params => {
         if (params && params.special) {
@@ -33,6 +35,7 @@ export class DetalhesPage implements OnInit {
   ngOnInit() {
     
   }
+  
   
 
 }

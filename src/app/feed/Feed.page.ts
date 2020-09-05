@@ -8,9 +8,12 @@ import { AlertController } from '@ionic/angular';
 })
 export class FeedPage {
 
-  constructor(public alertController: AlertController) {}
+  constructor(public alertController: AlertController) {
 
-  today = Date.now();
+    
+  }
+
+
 
   async presentAlert() {
     const alert = await this.alertController.create({

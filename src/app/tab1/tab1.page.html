@@ -14,10 +14,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+<<<<<<< HEAD
 
 
     <ion-card *ngFor="let praga of pragasSearch">
       <img src="{{praga.img}}" (click)="detalhe(praga)"/>
+=======
+  <!---
+<ion-list>
+  <ion-item *ngFor="let praga of pragasSearch" (click)="detalhe(praga)">
+    <ion-card >
+      <img src="{{praga.img}}" />
+>>>>>>> 994a4309862c3fd6660cf7ce836ca93b90813740
       <ion-card-header>
         <ion-card-title (click)="detalhe(praga)"><u>{{praga.nome}}</u></ion-card-title>
       </ion-card-header>
@@ -28,6 +36,26 @@
       <ion-button color="success" routerLink="/alerta" expand="block" fill="outline">Gerar alerta</ion-button>
     </ion-card>
 
+<<<<<<< HEAD
+=======
+  </ion-item>
+</ion-list>
+-->
+
+<ion-card *ngFor="let praga of pragasSearch">
+  <img src="{{praga.img}}" (click)="detalhe(praga)" />
+  <ion-card-header>
+    <ion-card-title (click)="detalhe(praga)"><u>{{praga.nome}}</u></ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    {{praga.combate}}
+  </ion-card-content>
+  <ion-button color="success" routerLink="/alerta" expand="block" fill="outline">Gerar alerta</ion-button>
+</ion-card>
+
+
+>>>>>>> 994a4309862c3fd6660cf7ce836ca93b90813740
 
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
