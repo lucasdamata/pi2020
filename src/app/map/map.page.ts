@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {ToastController,Platform,LoadingController} from '@ionic/angular';
 import {GoogleMaps,GoogleMap,GoogleMapsEvent,Marker,GoogleMapsAnimation,MyLocation} from '@ionic-native/google-maps';
 import {Polygon,BaseArrayClass,ILatLng,LatLng} from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -25,7 +26,10 @@ export class MapPage implements OnInit {
 
   ];
 
-  constructor(private platform: Platform,public loadingCtrl: LoadingController,public toastCtrl: ToastController) { }
+  constructor(private platform: Platform,
+              public loadingCtrl: LoadingController,
+              public toastCtrl: ToastController,
+              ) { }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
@@ -114,5 +118,6 @@ export class MapPage implements OnInit {
 
     toast.present();
   }
+
 
 }
