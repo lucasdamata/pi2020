@@ -30,7 +30,6 @@ export class DetalhesPage implements OnInit {
       }); 
       
     }
-     
 
   ngOnInit() {
     

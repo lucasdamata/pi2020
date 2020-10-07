@@ -40,8 +40,6 @@ export class MapPage implements OnInit {
         target: this.GORYOKAKU_POINTS
       }
     });
-
-
     let polygon: Polygon = this.map.addPolygonSync({
       'points': this.GORYOKAKU_POINTS,
       'strokeColor' : '#AA00FF',

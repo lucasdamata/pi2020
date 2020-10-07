@@ -14,12 +14,12 @@
 
       <ion-item>
         <ion-label position="floating">Funcionário: </ion-label>
-        <ion-input formControlName="funcionario"></ion-input>
+        <ion-input formControlName="funcionario" [(ngModel)]="name" text-right id="input"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Observações: </ion-label>
-        <ion-textarea formControlName="observacao"></ion-textarea>
+        <ion-textarea formControlName="observacao" [(ngModel)]="curso" text-right id="input"></ion-textarea>
       </ion-item>
 
       <div class="prioridade">
@@ -48,11 +48,16 @@
         <ion-icon slot="end" name="create"></ion-icon>
       </ion-button>
 
+
+ <ion-button (click)="sendPostRequest()">
+enviar
+ </ion-button>
+
+
     </ion-list>
     
-  </form>
+  </form>   
 
-  
-  
+
 </ion-content>
 
