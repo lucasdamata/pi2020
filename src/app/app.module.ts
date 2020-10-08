@@ -15,6 +15,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { NavController, NavParams } from '@ionic/angular';
 import { DetalhesPage } from './detalhes/detalhes.page';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 
 
@@ -33,6 +34,7 @@ import { DetalhesPage } from './detalhes/detalhes.page';
     StatusBar,
     SplashScreen,
     NavParams,
+    Geolocation,
     DetalhesPage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
