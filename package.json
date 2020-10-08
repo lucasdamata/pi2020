@@ -69,11 +69,7 @@
     "cordova-plugin-advanced-http": "^3.0.1",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-email-composer": "git+https://github.com/katzer/cordova-plugin-email-composer.git",
-<<<<<<< HEAD
     "cordova-plugin-file": "^6.0.2",
-=======
-    "cordova-plugin-geolocation": "^4.0.2",
->>>>>>> 3c4da5721bad7f5e9c16eefed8599118b5d20858
     "cordova-plugin-googlemaps": "git+https://github.com/mapsplugin/cordova-plugin-googlemaps.git#multiple_maps",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^4.2.1",
@@ -105,11 +101,7 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-email-composer": {},
       "cordova-plugin-googlemaps": {},
-<<<<<<< HEAD
       "cordova-plugin-advanced-http": {}
-=======
-      "cordova-plugin-geolocation": {}
->>>>>>> 3c4da5721bad7f5e9c16eefed8599118b5d20858
     },
     "platforms": [
       "android",
