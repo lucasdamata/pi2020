@@ -93,11 +93,10 @@ export class AlertaPage implements OnInit {
   }
 
  
-
   ngOnInit() {
   }
 
-
+    
 
   sendPostRequest() {
     var headers: {
