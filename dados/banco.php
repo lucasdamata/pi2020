@@ -19,7 +19,7 @@ try {
 			$dados .= '{"codigo": "'.$lista["id"].'",';
 			$dados .= '"nome": "'.$lista["nome"].'",';
 			$dados .= '"img": "'.$lista["img"].'",';
-			$dados .= '"descricao": "'.$lista["combate"].'"}';
+			$dados .= '"combate": "'.$lista["combate"].'"}';
 		}
 		$dados .= "]";
 		echo $dados;

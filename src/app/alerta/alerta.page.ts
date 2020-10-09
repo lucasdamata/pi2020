@@ -20,7 +20,6 @@ export class AlertaPage implements OnInit {
   curso:String = '';
 
 
-  
 
 
   get funcionario(){
@@ -59,9 +58,6 @@ export class AlertaPage implements OnInit {
   };
   
   
-  
-  
-
   alertForm = this.formBuilder.group({
     funcionario: [''],
     infestacao: [''],
@@ -74,23 +70,8 @@ export class AlertaPage implements OnInit {
               private emailComposer: EmailComposer,
               private http: HttpClient) { }
   
-  public submit(){
-    console.log(this.alertForm.value);
-  }
+ 
 
-  public estilo = 'style="color:red"';
-  
-  public send(){
-    let email = {
-      to: 'lucasmsilva@unipam.edu.br',
-      cc: 'pi.d2gl@gmail.com',
-      attachments: [],
-      subject: 'Alerta',
-      body: '<b><h1>Alerta</h1><br>'+'Funcionário: '+ this.alertForm.value.funcionario + '<br>Nivel de infertação: '+ this.alertForm.value.infestacao + '<br>Localização: ' + this.alertForm.value.local + '<br>Observações: ' + this.alertForm.value.observacao,
-      isHtml: true
-    };
-    this.emailComposer.open(email);
-  }
 
  
   ngOnInit() {
@@ -107,7 +88,8 @@ export class AlertaPage implements OnInit {
 
     let postData = {
             "nome": this.name,
-            "curso": this.curso,        
+            "curso": this.curso,
+                   
     }
 
     this.http.post("http://127.0.0.1:5000/users", postData, {headers:headers})

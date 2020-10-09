@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import {Headers, Http, RequestOptions} from '@angular/http';
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -10,10 +13,13 @@ export class Tab3Page {
 
 
   public pragas: Array<object> = [];
+  funcionario: String ='';
+  observacao :String = '';
 
   
 
-  constructor(public photoService: PhotoService) {
+  constructor(public photoService: PhotoService,
+              private http: HttpClient) {
 
    // array estático, será substituido por consultas em banco
     this.pragas = [
@@ -69,5 +75,26 @@ export class Tab3Page {
     ]
   }
 
+
+  sendPostRequest() {
+    var headers: {
+      "Access-Control-Allow-Origin": " http://127.0.0.1:5000/",
+      "Accept": 'application/json',
+      "Content-Type": "application/json"
+    };
+
+    let postData = {
+            "nome": this.funcionario,
+            "curso": this.observacao,
+                   
+    }
+
+    this.http.post("http://127.0.0.1:5000/users", postData, {headers:headers})
+      .subscribe(data => {
+        console.log(data['_body']);
+       }, error => {
+        console.log(error);
+      });
+  }
  
 }

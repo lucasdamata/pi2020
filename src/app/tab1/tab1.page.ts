@@ -49,7 +49,7 @@ export class Tab1Page {
             id: data[i]["id"],
             nome: data[i]["nome"],
             img: data[i]["img"],
-            combate: data[i]["descricao"]
+            combate: data[i]["combate"],
           });
         
           this.pragasAll = this.pragasSearch;

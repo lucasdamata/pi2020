@@ -10,7 +10,7 @@
 
 <ion-content [fullscreen]="true">
   <ion-item>
-    <ion-label position="floating">Funcionário:</ion-label>
+    <ion-label position="floating" [(ngModel)]="funcionario">Funcionário:</ion-label>
     <ion-input></ion-input>
   </ion-item>
 
@@ -25,7 +25,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">Observação</ion-label>
+    <ion-label position="floating" [(ngModel)]="observacao">Observação</ion-label>
     <ion-textarea></ion-textarea>
   </ion-item>
 
@@ -55,7 +55,9 @@
     </ion-row>
   </ion-grid>
   
-  <ion-button color="success" expand="block"><ion-icon slot="end" name="create"></ion-icon>ENVIAR</ion-button> <br>
+  <ion-button color="success" expand="block" (click)="sendPostRequest()"><ion-icon slot="end" name="create"></ion-icon>
+    ENVIAR</ion-button> 
+    <br>
     
     <ion-content>
       <ion-grid >
@@ -69,6 +71,7 @@
     
       <!-- ion-fab markup  -->
     </ion-content>
+
 
 
 </ion-content>
