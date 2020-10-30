@@ -15,6 +15,10 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-button routerLink="/map">
+mapas
+  </ion-button>
+
 
   <ion-card *ngFor="let praga of pragasSearch">
     <img src="{{praga.img}}" (click)="detalhe(praga)" />

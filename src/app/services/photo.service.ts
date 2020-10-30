@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Plugins, CameraResultType, Capacitor, FilesystemDirectory, CameraPhoto, CameraSource } from '@capacitor/core';
 
+//import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
+
+
 const { Camera, Filesystem, Storage } = Plugins;
 
 @Injectable({
@@ -20,7 +24,9 @@ export class PhotoService {
       webviewPath: capturedPhoto.webPath
     });
   }
-  constructor() { }
+  constructor(
+    //public androidPermissions: AndroidPermissions
+  ) { }
 }
 
 interface Photo {

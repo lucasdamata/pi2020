@@ -1,6 +1,10 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: *", false);
 header('Content-Type: text/html; charset=utf-8');
+header('Access-Control-Allow-Methods: "GET, PUT, POST, DELETE, OPTIONS');
+
+
+
 $host = "mysql:host=localhost;dbname=pi2020";
 $usuario = "root";
 $senha = "";

@@ -1,17 +1,24 @@
-
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
 
     </ion-buttons>
-    <ion-title>Mapa</ion-title>
+    <ion-title>Local</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-button>Salvar àrea infectada</ion-button>
-  <ion-button ion-button (click)="onButtonClick()">Meu Local</ion-button>
-  <p>Selecione o local de infestação</p>
-  <div id="map_canvas"></div>
+
+<ion-content> 
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button (click)="ShowCords()" ion-fab color="tertiary">
+      <ion-icon name="information-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <div class="map-wrapper" style="height: 100%;">      
+    <div id="map_center">
+      <ion-icon name="pin" size="large" color="danger"></ion-icon>      
+    </div>
+    <div #map id="map"  style="height: 100%;"></div>
+  </div>   
 </ion-content>

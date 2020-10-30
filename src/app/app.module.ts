@@ -16,6 +16,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavController, NavParams } from '@ionic/angular';
 import { DetalhesPage } from './detalhes/detalhes.page';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+
+
+//import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 
 
 
@@ -35,8 +40,11 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     SplashScreen,
     NavParams,
     Geolocation,
+    NativeGeocoder,
     DetalhesPage,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    Camera,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+  
   ],
   bootstrap: [AppComponent]
 })

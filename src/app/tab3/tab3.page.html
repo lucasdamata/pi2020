@@ -9,68 +9,71 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-label position="floating" [(ngModel)]="funcionario">Funcionário:</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Funcionário:</ion-label>
+      <ion-input type="text" [(ngModel)]="funcionario"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Observação:</ion-label>
+      <ion-input type="text" [(ngModel)]="observacao"></ion-input>
+    </ion-item>
+
 
   <ion-item>
     <ion-label>Talhão</ion-label>
     <ion-select value="brown" okText="selecionar" cancelText="cancelar">
-      <ion-select-option >1</ion-select-option>
-      <ion-select-option >2</ion-select-option>
-      <ion-select-option >3</ion-select-option>
-      <ion-select-option >4</ion-select-option>
+      <ion-select-option>1</ion-select-option>
+      <ion-select-option>2</ion-select-option>
+      <ion-select-option>3</ion-select-option>
+      <ion-select-option>4</ion-select-option>
     </ion-select>
   </ion-item>
 
-  <ion-item>
-    <ion-label position="floating" [(ngModel)]="observacao">Observação</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+
 
   <div class="prioridade">
-  <label >Prioridade:</label>
-  <ion-segment>
-    <ion-segment-button value="baixa">
-      <ion-label color="primary">baixa</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="média">
-      <ion-label>média</ion-label>
-    </ion-segment-button>
-    <ion-segment-button  color="danger" value="alta">
-      <ion-label color="danger">alta</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-</div>
+    <label>Prioridade:</label>
+    <ion-segment>
+      <ion-segment-button value="baixa">
+        <ion-label color="primary">baixa</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="média">
+        <ion-label>média</ion-label>
+      </ion-segment-button>
+      <ion-segment-button color="danger" value="alta">
+        <ion-label color="danger">alta</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button color="success" expand="block" (click)="photoService.addNewToGallery()"><ion-icon name="camera-outline"></ion-icon>Câmera</ion-button>
+        <ion-button color="success" expand="block" (click)="takePicture()">
+          <ion-icon name="camera-outline"></ion-icon>Câmera
+        </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="success" expand="block" routerLink="/map"><ion-icon name="location-sharp"></ion-icon>selecionar local</ion-button>
+        <ion-button color="success" expand="block" routerLink="/map">
+          <ion-icon name="location-sharp"></ion-icon>selecionar local
+        </ion-button>
       </ion-col>
 
     </ion-row>
   </ion-grid>
-  
-  <ion-button color="success" expand="block" (click)="sendPostRequest()"><ion-icon slot="end" name="create"></ion-icon>
-    ENVIAR</ion-button> 
-    <br>
-    
-    <ion-content>
-      <ion-grid >
-        <ion-row>
-        <ion-col size="4" 
-          *ngFor="let photo of photoService.photos; index as position">
-            <ion-img src="{{ photo.webviewPath }}"></ion-img>
-        </ion-col>
-        </ion-row>
-      </ion-grid>
-    
-      <!-- ion-fab markup  -->
-    </ion-content>
+
+  <ion-button color="success" expand="block" (click)="sendPostRequest()">
+    <ion-icon slot="end" name="create"></ion-icon>
+    ENVIAR
+  </ion-button>
+  <br>
+  <br>
+  <br>
+
+
+  <img [src]="capturedSnapURL" />
 
 
 

@@ -4,6 +4,13 @@ import {ToastController,Platform,LoadingController} from '@ionic/angular';
 import {GoogleMaps,GoogleMap,GoogleMapsEvent,Marker,GoogleMapsAnimation,MyLocation} from '@ionic-native/google-maps';
 import {Polygon,BaseArrayClass,ILatLng,LatLng} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+
+import { ViewChild, ElementRef, NgZone } from '@angular/core';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+
+declare var google;
+
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -11,25 +18,39 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 })
 export class MapPage implements OnInit {
 
-  map: GoogleMap;
+
   loading: any;
   
-  GORYOKAKU_POINTS: ILatLng[] = [
-    {lat: -18.5872582,           lng: -46.514674899999996},
-    {lat: -18.5872583,           lng: -46.514674899999996},
-    {lat: -18.5872584,           lng: -46.514674899999996},
-    {lat: -18.5872585,           lng: -46.514674899999996},
-    {lat: -18.5872582,           lng: -46.514674899999996},
-    {lat: -18.5872582,           lng: -46.514674899999996},
-    {lat: -18.5872582,           lng: -46.514674899999996},
-    
+  @ViewChild('map',  {static: false}) mapElement: ElementRef;
+  
+  map: any;
+  address:string;
+  lat: string;
+  long: string;  
+  autocomplete: { input: string; };
+  autocompleteItems: any[];
+  location: any;
 
-  ];
+  placeid: any;
+  GoogleAutocomplete: any;
+
+
+
+  
+
 
   constructor(private platform: Platform,
               public loadingCtrl: LoadingController,
               public toastCtrl: ToastController,
-              ) { }
+              private geolocation: Geolocation,
+              private nativeGeocoder: NativeGeocoder,    
+              public zone: NgZone,
+              ) { 
+
+                this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+                this.autocomplete = { input: '' };
+                this.autocompleteItems = [];
+              }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
@@ -38,84 +59,98 @@ export class MapPage implements OnInit {
     await this.loadMap();
   }
 
-  loadMap() {
-    this.map = GoogleMaps.create('map_canvas', {
-      camera: {
-        target: this.GORYOKAKU_POINTS
-      }
-    });
-    let polygon: Polygon = this.map.addPolygonSync({
-      'points': this.GORYOKAKU_POINTS,
-      'strokeColor' : '#AA00FF',
-      'fillColor' : '#00FFAA',
-      'strokeWidth': 10
-    });
 
-    let points: BaseArrayClass<ILatLng> = polygon.getPoints();
-    // pontos de area
-    points.forEach((latLng: ILatLng, idx: number) => {
-      let marker: Marker = this.map.addMarkerSync({
-        draggable: true,
-        position: latLng
-      });
-      marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe((params) => {
-        let position: LatLng = params[0];
-        points.setAt(idx, position);
-      });
-    });
 
-  }
+loadMap() {
+    
+    //FIRST GET THE LOCATION FROM THE DEVICE.
+    this.geolocation.getCurrentPosition().then((resp) => {
+      let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+      let mapOptions = {
+        center: latLng,
+        zoom: 20,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      } 
+      
+      //LOAD THE MAP WITH THE PREVIOUS VALUES AS PARAMETERS.
+      this.getAddressFromCoords(resp.coords.latitude, resp.coords.longitude); 
+      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions); 
+      this.map.addListener('tilesloaded', () => {
+        console.log('accuracy',this.map, this.map.center.lat());
+        this.getAddressFromCoords(this.map.center.lat(), this.map.center.lng())
+        this.lat = this.map.center.lat()
+        this.long = this.map.center.lng()
+      }); 
 
-  async onButtonClick() {
-    this.map.clear();
-
-    this.loading = await this.loadingCtrl.create({
-      message: 'Aguarde carregando...'
-    });
-    await this.loading.present();
-
-    // pegar minha localização
-    this.map.getMyLocation().then((location: MyLocation) => {
-      this.loading.dismiss();
-      console.log(JSON.stringify(location, null ,2));
-
-      // movendo o mapa
-      this.map.animateCamera({
-        target: location.latLng,
-        zoom: 17,
-        tilt: 30
-      });
-
-      // adicionando marcador
-      let marker: Marker = this.map.addMarkerSync({
-        title: 'Essa é sua localização aproximada',
-        position: location.latLng,
-        animation: GoogleMapsAnimation.BOUNCE
-      });
-
-      // mostrar a janela
-      marker.showInfoWindow();
-
-      // mostrar mapa
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-        this.showToast('clicked!');
-      });
-    })
-    .catch(err => {
-      this.loading.dismiss();
-      this.showToast(err.error_message);
+    }).catch((error) => {
+      console.log('Error getting location', error);
     });
   }
 
-  async showToast(message: string) {
-    let toast = await this.toastCtrl.create({
-      message: message,
-      duration: 2000,
-      position: 'middle'
-    });
-
-    toast.present();
+  
+  getAddressFromCoords(lattitude, longitude) {
+    console.log("getAddressFromCoords "+lattitude+" "+longitude);
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5    
+    }; 
+    this.nativeGeocoder.reverseGeocode(lattitude, longitude, options)
+      .then((result: NativeGeocoderResult[]) => {
+        this.address = "";
+        let responseAddress = [];
+        for (let [key, value] of Object.entries(result[0])) {
+          if(value.length>0)
+          responseAddress.push(value); 
+        }
+        responseAddress.reverse();
+        for (let value of responseAddress) {
+          this.address += value+", ";
+        }
+        this.address = this.address.slice(0, -2);
+      })
+      .catch((error: any) =>{ 
+        this.address = "Address Not Available!";
+      }); 
   }
 
+  //FUNCTION SHOWING THE COORDINATES OF THE POINT AT THE CENTER OF THE MAP
+  ShowCords(){
+    alert('lat' +this.lat+', long'+this.long )
+  }
 
+  
+  
+
+/*
+ loadMap() {
+  this.map = GoogleMaps.create('map_canvas', {
+    camera: {
+      target: this.GORYOKAKU_POINTS
+    }
+  });
+
+  let polygon: Polygon = this.map.addPolygonSync({
+    'points': this.GORYOKAKU_POINTS,
+    'strokeColor' : '#AA00FF',
+    'fillColor' : '#00FFAA',
+    'strokeWidth': 10
+  });
+
+  let points: BaseArrayClass<ILatLng> = polygon.getPoints();
+
+  points.forEach((latLng: ILatLng, idx: number) => {
+    let marker: Marker = this.map.addMarkerSync({
+      draggable: true,
+      position: latLng
+    });
+    marker.on(GoogleMapsEvent.MARKER_DRAG).subscribe((params) => {
+      let position: LatLng = params[0];
+      points.setAt(idx, position);
+    });
+  });
+
+}
+*/
+
+  
 }

@@ -7,6 +7,10 @@ import {EmailComposer} from '@ionic-native/email-composer/ngx';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {Headers, Http, RequestOptions} from '@angular/http';
 
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { LoadingController } from '@ionic/angular';
+
+
 
 @Component({
   selector: 'app-alerta',
@@ -16,46 +20,11 @@ import {Headers, Http, RequestOptions} from '@angular/http';
 export class AlertaPage implements OnInit {
 
 
-  name: String ='';
-  curso:String = '';
+  funcionario: String ='';
+  observacao: String = '';
 
 
 
-
-  get funcionario(){
-    return this.alertForm.get('funcionario');
-  }
-
-  get infestacao(){
-    return this.alertForm.get('infertacao');
-  }
-
-  get local(){
-    return this.alertForm.get('local');
-  }
-
-  get observacao(){
-    return this.alertForm.get('observacao');
-  }
-
-  public errorMessages = {
-    funcionario: [
-      {type: 'required', message: 'Preencha o seu nome'},
-      {type: 'maxlength', message: 'Nome deverá ser válido'}
-    ],
-    infestacao: [
-      {type: 'required', message: 'Infestação por metro quadrado'},
-      {type: 'maxlength', message: 'inferstação deve ser descrita'}
-    ],
-    local: [
-      {type: 'required', message: 'Preencha com latitude ou longitude'},
-      {type: 'maxlength', message: 'Deverá ser preenchido corretamente para identificação da área'}
-    ],
-    observacao: [
-      {type: 'required', message: 'Descreva corretamente'},
-      {type: 'maxlength', message: 'Decrição para melhor conhecimento'}
-    ]
-  };
   
   
   alertForm = this.formBuilder.group({
@@ -68,7 +37,9 @@ export class AlertaPage implements OnInit {
   constructor(public photoService: PhotoService,
               private formBuilder: FormBuilder, 
               private emailComposer: EmailComposer,
-              private http: HttpClient) { }
+              private http: HttpClient,
+              public loadingController: LoadingController,
+              public camera: Camera) { }
   
  
 
@@ -77,27 +48,41 @@ export class AlertaPage implements OnInit {
   ngOnInit() {
   }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Enviando dados...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    
+  }
     
 
   sendPostRequest() {
+    this.presentLoading();
     var headers: {
-      "Access-Control-Allow-Origin": " http://127.0.0.1:5000/",
+      "Access-Control-Allow-Origin": " http://127.0.0.1:5000/registros",
       "Accept": 'application/json',
       "Content-Type": "application/json"
     };
 
     let postData = {
-            "nome": this.name,
-            "curso": this.curso,
+            "funcionario": this.funcionario,
+            "observacao": this.observacao,
                    
     }
 
-    this.http.post("http://127.0.0.1:5000/users", postData, {headers:headers})
+    this.http.post("http://127.0.0.1:5000/registros", postData, {headers:headers})
       .subscribe(data => {
         console.log(data['_body']);
        }, error => {
         console.log(error);
       });
+
+
   }
 
 
