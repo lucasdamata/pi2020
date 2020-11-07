@@ -5,7 +5,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Headers, Http, RequestOptions } from '@angular/http';
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController} from '@ionic/angular';
+
+import { AlertController } from '@ionic/angular';
+import { catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-tab3',
@@ -15,16 +19,14 @@ import { LoadingController } from '@ionic/angular';
 export class Tab3Page {
 
 
-
-
-
   public pragas: Array<object> = [];
 
   funcionario: String = '';
   observacao: String = '';
   img: String = '';
+  
 
-  capturedSnapURL:string;
+  capturedSnapURL:any;
 
   cameraOptions: CameraOptions = {
     quality: 20,
@@ -36,7 +38,9 @@ export class Tab3Page {
   constructor(public photoService: PhotoService,
     public camera: Camera,
     private http: HttpClient,
-    public loadingController: LoadingController) {
+    public loadingController: LoadingController,
+    public toastCtrl: ToastController,
+    public alertController: AlertController) {
 
     // array estático, será substituido por consultas em banco
     this.pragas = [
@@ -92,62 +96,51 @@ export class Tab3Page {
     ]
   }
 
-  /*
-    sendPostRequest() {
-      var headers: {
-        "Access-Control-Allow-Origin": " *",
-        "Accept": 'application/json',
-        "Content-Type": "application/json"
-        
-      };
-  
-      let postData = {
-              "funcionario": this.funcionario,
-              "observacao": this.observacao,
-                     
-      }
-  
-      this.http.post(" http://1b561a10c73a.ngrok.io/registros", postData, {headers:headers})
-        .subscribe(data => {
-          console.log(data['_body']);
-         }, error => {
-          console.log(error);
-        });
-    }
-    */
 
-  
+
+  async presentAlert(msg) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Algo deu errado',
+      message: msg,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 
    takePicture() {
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
-      // this.camera.DestinationType.FILE_URI gives file URI saved in local
-      // this.camera.DestinationType.DATA_URL gives base64 URI
-      
+
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.capturedSnapURL = base64Image;
-    }, (err) => {
       
+    }, (err) => {
       console.log(err);
       // Handle error
     });
   }
-  
 
   sendPostRequest() {
+
+   let  requestOptions: any  = {
+      "Accept": 'application/json',
+      'Content-Type': 'application/json'
+    }
+
     let postData = {
       "funcionario": this.funcionario,
       "observacao": this.observacao,
       "img": this.capturedSnapURL
-
     }
+    this.http.post("https://adc87d70036c.ngrok.io/registros", postData, requestOptions).subscribe(res=> {
 
-    this.http.post(" https://0790f836db3a.ngrok.io/registros", postData).subscribe((res: any) => {
       console.log(res);
-    })
-    this.presentLoading()
 
-
-  }
+     }, error => {
+      this.presentAlert("não foi possível processar suas informações")
+    });
+}
 
   async presentLoading() {
     const loading = await this.loadingController.create({

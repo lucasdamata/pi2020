@@ -10,7 +10,7 @@ import {map} from 'rxjs/operators';
 })
 export class ServidorService {
 
-  url : String = "http://localhost/dados/";
+  url : String = "https://ea53cf68ba47.ngrok.io/dados/";
 
   constructor(public http : HttpClient) { }
 

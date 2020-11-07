@@ -9,45 +9,37 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  
     <ion-item>
       <ion-label position="floating">Funcionário:</ion-label>
       <ion-input type="text" [(ngModel)]="funcionario"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label position="floating" >Fazenda:</ion-label>
+      <ion-input type="text" [(ngModel)]="cdFazenda" placeholder="código da fazenda"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Setor:</ion-label>
+      <ion-input type="text" [(ngModel)]="setor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Talhão:</ion-label>
+      <ion-input type="text" [(ngModel)]="talhao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Variedade:</ion-label>
+      <ion-input type="text" [(ngModel)]="variedade"></ion-input>
+    </ion-item>
 
     <ion-item>
       <ion-label position="floating">Observação:</ion-label>
       <ion-input type="text" [(ngModel)]="observacao"></ion-input>
     </ion-item>
 
-
-  <ion-item>
-    <ion-label>Talhão</ion-label>
-    <ion-select value="brown" okText="selecionar" cancelText="cancelar">
-      <ion-select-option>1</ion-select-option>
-      <ion-select-option>2</ion-select-option>
-      <ion-select-option>3</ion-select-option>
-      <ion-select-option>4</ion-select-option>
-    </ion-select>
-  </ion-item>
-
-
-
-  <div class="prioridade">
-    <label>Prioridade:</label>
-    <ion-segment>
-      <ion-segment-button value="baixa">
-        <ion-label color="primary">baixa</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="média">
-        <ion-label>média</ion-label>
-      </ion-segment-button>
-      <ion-segment-button color="danger" value="alta">
-        <ion-label color="danger">alta</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </div>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -73,7 +65,7 @@
   <br>
 
 
-  <img [src]="capturedSnapURL" />
+  <img [src]="capturedSnapURL"/>
 
 
 
