@@ -78,6 +78,8 @@ export class AlertaPage implements OnInit {
     this.http.post("http://127.0.0.1:5000/registros", postData, {headers:headers})
       .subscribe(data => {
         console.log(data['_body']);
+        
+        
        }, error => {
         console.log(error);
       });

@@ -123,22 +123,28 @@ export class Tab3Page {
 
   sendPostRequest() {
 
-   let  requestOptions: any  = {
-      "Accept": 'application/json',
-      'Content-Type': 'application/json'
-    }
+  
+
+    const headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                 .set('Accept', 'application/json')
+                                 .set('Access-Control-Allow-Origin', 'http://localhost:8100')
+                                 .set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+                                 .set('Access-Control-Allow-Headers', 'Content-Type')
+                                 .set('responseType', 'text');
+                                 
 
     let postData = {
       "funcionario": this.funcionario,
       "observacao": this.observacao,
-      "img": this.capturedSnapURL
+      "img": "ok"
     }
-    this.http.post("https://adc87d70036c.ngrok.io/registros", postData, requestOptions).subscribe(res=> {
+    this.http.post("http://127.0.0.1:5000/registros", postData, { headers: headers }).subscribe(res=> {
 
       console.log(res);
 
      }, error => {
       this.presentAlert("não foi possível processar suas informações")
+      console.log(error.status)
     });
 }
 

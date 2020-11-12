@@ -12,27 +12,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="content" [fullscreen]="true" >
   <ion-fab vertical="top" horizontal="end" slot="fixed">
     <ion-icon name="notifications" size="large" color="danger" (click)="presentAlert()"></ion-icon>
   </ion-fab>
 
-  <ion-card >
-    <img src="../../assets/images/cupim.jpg" />
+  <ion-card *ngFor="let registro of registrosSalvos">
     <ion-card-header>
-    
-      <ion-card-title>Cupins</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      <ion-card-title>{{registro.funcionario}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
-      São insetos sociais que vivem em colônias organizadas. Perdas ocorrem com falhas na brotação das soqueiras e redução da longevidade do canavial. A maioria das espécies de cupins não é agressiva à cultura, ao contrário é benéfica. Podem reduzir em até 10 t de cana/ha/ano, além de ocasionarem redução da longevidade do canavial.
-    </ion-card-content>
-
-    <ion-row  >
-      <ion-col size="3">
-      <ion-button color="success" routerLink="/detalhes">detalhes</ion-button>
-      </ion-col>
-    </ion-row>
-
-  </ion-card>
   
+    <ion-card-content>
+      {{registro.observacao}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button (click) ="click()" class="botao">
+   ver registros
+  </ion-button>
+
 </ion-content>
