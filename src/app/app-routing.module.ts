@@ -13,14 +13,20 @@ const routes: Routes = [
   {
     path: 'alerta',
     loadChildren: () => import('./alerta/alerta.module').then( m => m.AlertaPageModule)
-  },  {
+  },
+  {
     path: 'map',
     loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   },
   {
     path: 'charts',
     loadChildren: () => import('./charts/charts.module').then( m => m.ChartsPageModule)
-  }
+  },  {
+    path: 'mapsdetail',
+    loadChildren: () => import('./mapsdetail/mapsdetail.module').then( m => m.MapsdetailPageModule)
+  },
+
+ 
 
 ];
 @NgModule({

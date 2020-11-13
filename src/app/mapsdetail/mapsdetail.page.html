@@ -2,13 +2,14 @@
   <ion-toolbar color="success">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
+
     </ion-buttons>
-    <ion-title>Detalhes</ion-title>
+    <ion-title>Detail Maps</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <img src="{{praga.img}}" alt="">
-<h1>{{praga.nome}}</h1>
-  
+<ion-content padding>
+
+  <div #map id="map"></div>
+
 </ion-content>

@@ -14,6 +14,7 @@ import {ServidorService} from '../services/servidor.service';
 })
 export class Tab1Page {
   alertController: any;
+  page:string = "tab1";
 
   public pragas: any;
   public pragasSearch: Array<{id: any,nome: any, img: String, combate: String}>;

@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { IonSlides } from '@ionic/angular';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+
 
 import {ServidorService} from '../services/servidor.service';
 
@@ -11,21 +14,71 @@ import {ServidorService} from '../services/servidor.service';
 })
 export class FeedPage {
 
+  @ViewChild('slideWithNav', { static: false }) slideWithNav: IonSlides;
+
+  public coords: Array<{lat: -18.5872582,lng: -46.514674899999996}>;
+  
+
+  sliderOne: any;
+
+  slideOptsOne = {
+    initialSlide: 1,
+    slidesPerView: 1,
+    autoplay: true
+  };
+
 
   public registros: any;
   public registrosSalvos: Array<{id: any, funcionario: any, observacao: String, img: String}>;
 
   constructor(public alertController: AlertController,
-              public servidor: ServidorService) {
+              public servidor: ServidorService,
+              private router: Router,
+              private route: ActivatedRoute ) {
+
+                this.sliderOne =
+                {
+                  isBeginningSlide: true,
+                  isEndSlide: false,
+                  slidesItems: [
+                    {
+                      id: 1
+                    },
+                    {
+                      id: 2
+                    },
+                    {
+                      id: 3
+                    },
+                    {
+                      id: 4
+                    },
+                  ]
+                };
 
     
   }
 
   async ngOnInit() {
+    
     this.registros = await this.showDataReg();
     this.registrosSalvos= [];
     
+    
   }
+
+  doRefresh(event) {
+    this.registrosSalvos= [];
+    this.showDataReg();
+
+    console.log(this.registrosSalvos[4]);
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 3000);
+  }
+ 
 
 
   async presentAlert() {
@@ -61,10 +114,18 @@ export class FeedPage {
     );
    }
 
+   
 
+   gotodetail(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        lat:-18.5872582,
+        lng:-46.514674899999996
+      }
+    };
+    this.router.navigate(['mapsdetail'], navigationExtras);
+    console.log(navigationExtras);
 
-   click(){
-     console.log(this.registrosSalvos)
    }
 
 

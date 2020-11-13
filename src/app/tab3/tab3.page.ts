@@ -10,6 +10,7 @@ import { LoadingController, ToastController} from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab3',
@@ -20,10 +21,14 @@ export class Tab3Page {
 
 
   public pragas: Array<object> = [];
+  page:string = "tab3";
 
   funcionario: String = '';
   observacao: String = '';
   img: String = '';
+  local:any;
+  lat:any
+  lng:any 
   
 
   capturedSnapURL:any;
@@ -40,7 +45,19 @@ export class Tab3Page {
     private http: HttpClient,
     public loadingController: LoadingController,
     public toastCtrl: ToastController,
-    public alertController: AlertController) {
+    public alertController: AlertController,
+    public route: ActivatedRoute,
+    public router: Router,) {
+
+
+      this.local = this.route.queryParams.subscribe(params => {
+        if (params && params.special) {
+          this.local = JSON.parse(params.special);
+        }
+        this.lat = this.local.lat;
+        this.lng = this.local.lng;
+
+      }); 
 
     // array estático, será substituido por consultas em banco
     this.pragas = [
@@ -96,35 +113,31 @@ export class Tab3Page {
     ]
   }
 
-
-
-  async presentAlert(msg) {
+/*
+  async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Algo deu errado',
-      message: msg,
+      message: this.local,
       buttons: ['OK']
     });
 
     await alert.present();
   }
+*/
+
 
    takePicture() {
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
 
       let base64Image = 'data:image/jpeg;base64,' + imageData;
       this.capturedSnapURL = base64Image;
-      
     }, (err) => {
       console.log(err);
       // Handle error
     });
   }
-
   sendPostRequest() {
-
-  
-
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
                                  .set('Accept', 'application/json')
                                  .set('Access-Control-Allow-Origin', 'http://localhost:8100')
@@ -143,7 +156,7 @@ export class Tab3Page {
       console.log(res);
 
      }, error => {
-      this.presentAlert("não foi possível processar suas informações")
+     // this.presentAlert("não foi possível processar suas informações")
       console.log(error.status)
     });
 }

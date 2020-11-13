@@ -1,35 +1,73 @@
-<ion-header >
-  <ion-toolbar color="success" >
+<ion-header>
+  <ion-toolbar color="success">
     <ion-buttons slot="start">
       <ion-menu-button auto-hide="false"></ion-menu-button>
-     
+
     </ion-buttons>
-    
+
     <ion-buttons slot="primary">
       {{ today | date: 'dd/MM HH:mm' }}
     </ion-buttons>
-    <ion-title>Bevap</ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="content" [fullscreen]="true" >
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-icon name="notifications" size="large" color="danger" (click)="presentAlert()"></ion-icon>
-  </ion-fab>
+<ion-content class="content" [fullscreen]="true">
 
-  <ion-card *ngFor="let registro of registrosSalvos">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Solte para recarregar"
+      refreshingSpinner="circles" refreshingText="Carregando...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="../../assets/images/cupim.jpg">
+      </ion-avatar>
+      <ion-label>
+        <h3>Nome do Funcionario</h3>
+        <p>Data: 13/11/2020</p>
+        <p>Horário: 16:45:12</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav>
+      <ion-slide *ngFor="let s of sliderOne.slidesItems">
+        <img src="../../assets/images/cupim/{{s.id}}.jpg">
+        <span class="slide-text">imagem {{s.id}}</span>
+      </ion-slide>
+    </ion-slides>
+
     <ion-card-header>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      <ion-card-title>{{registro.funcionario}}</ion-card-title>
+      <ion-card-title>Broca da Cana - Diatraea saccharalis</ion-card-title>
     </ion-card-header>
-  
     <ion-card-content>
-      {{registro.observacao}}
+      Dentre as diferentes pragas que atacam a cultura, a broca-da-cana de açúcar, Diatraea saccharalis, é considerada a mais importante, devido a sua ampla distribuição geográfica e dos seus elevados prejuízos econômicos, com perdas diretas (redução da produtividade agrícola) e indiretas (perdas na qualidade da matéria-prima).
     </ion-card-content>
+
+
+    <ion-footer>
+      
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button color='success' expand="block">
+              Detalhes
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button color='success' expand="block" (click)="gotodetail()" >
+              Local
+            </ion-button>
+          </ion-col>
+        </ion-row>
+ 
+    </ion-grid>
+    </ion-footer>
   </ion-card>
 
-  <ion-button (click) ="click()" class="botao">
-   ver registros
-  </ion-button>
+
+
 
 </ion-content>

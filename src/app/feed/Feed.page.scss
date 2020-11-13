@@ -4,7 +4,17 @@ margin: auto;
 display: block;
 }
 
+.card-button:active{
 
-ion-content {
-    --background: url(../../assets/images/formigas.gif) no-repeat center/cover fixed;
+    background-color: rgb(245, 13, 13); 
 }
+
+  
+  .slide-text{
+    position: absolute;
+    color: white;
+    bottom: 30px;
+  }
+
+
+
