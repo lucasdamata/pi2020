@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PhotoService } from '../services/photo.service';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -27,8 +27,8 @@ export class Tab3Page {
   observacao: String = '';
   img: String = '';
   local:any;
-  lat:any
-  lng:any 
+  lat:any;
+  lng:any;
   
 
   capturedSnapURL:any;
@@ -53,9 +53,10 @@ export class Tab3Page {
       this.local = this.route.queryParams.subscribe(params => {
         if (params && params.special) {
           this.local = JSON.parse(params.special);
+          this.lat = this.local.lat;
+          this.lng = this.local.lng;
+         
         }
-        this.lat = this.local.lat;
-        this.lng = this.local.lng;
 
       }); 
 
@@ -112,19 +113,8 @@ export class Tab3Page {
       },
     ]
   }
+  
 
-/*
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Algo deu errado',
-      message: this.local,
-      buttons: ['OK']
-    });
-
-    await alert.present();
-  }
-*/
 
 
    takePicture() {

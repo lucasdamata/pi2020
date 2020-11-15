@@ -18,6 +18,8 @@ export class FeedPage {
 
   public coords: Array<{lat: -18.5872582,lng: -46.514674899999996}>;
   
+  loc:any = {lat:-19.006536,lng:-46.3135472};
+
 
   sliderOne: any;
 
@@ -117,10 +119,12 @@ export class FeedPage {
    
 
    gotodetail(){
+
+    let loc = this.loc;
+
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        lat:-18.5872582,
-        lng:-46.514674899999996
+        special:JSON.stringify(loc)
       }
     };
     this.router.navigate(['mapsdetail'], navigationExtras);

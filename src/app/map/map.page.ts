@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ToastController,Platform,LoadingController, AlertController} from '@ionic/angular';
-import {GoogleMaps,GoogleMap,GoogleMapsEvent,Marker,GoogleMapsAnimation,MyLocation, MarkerOptions} from '@ionic-native/google-maps';
+import { ToastController, Platform, LoadingController, AlertController } from '@ionic/angular';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, Marker, GoogleMapsAnimation, MyLocation, MarkerOptions } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import { Router, NavigationExtras } from '@angular/router';
@@ -19,30 +19,38 @@ export class MapPage implements OnInit {
 
   map: GoogleMap;
   loading: any;
-  coords:any;
- 
+  local:any;
+  lat:any;
+  lng:any;
+
+
 
   constructor(private platform: Platform,
-              public alertController: AlertController,
-              public loadingCtrl: LoadingController,
-              public toastCtrl: ToastController,
-              private geolocation: Geolocation,
-              private nativeGeocoder: NativeGeocoder,    
-              public zone: NgZone,
-              private router: Router
-              ) { }
+    public alertController: AlertController,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
+    private geolocation: Geolocation,
+    private nativeGeocoder: NativeGeocoder,
+    public zone: NgZone,
+    private router: Router
+  ) { 
+
+    this.geolocation.getCurrentPosition().then(resp=>{
+      this.local = resp.coords;
+      this.lat = resp.coords.latitude;
+      this.lng = resp.coords.longitude;
+    })
+  }
 
   async ngOnInit() {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
     await this.platform.ready();
     await this.loadMap();
-    this.mylocation();
-    
+
+
   }
   loadMap() {
-
-    
     this.map = GoogleMaps.create('map_canvas', {
       camera: {
         zoom: 300,
@@ -56,21 +64,21 @@ export class MapPage implements OnInit {
     this.map.clear();
 
     this.loading = await this.loadingCtrl.create({
-      message: 'Please wait...'
+      message: 'carregando aguarde...'
     });
     await this.loading.present();
 
     // Get the location of you
     this.map.getMyLocation().then((location: MyLocation) => {
       this.loading.dismiss();
-      console.log(JSON.stringify(location, null ,2));
+      console.log(JSON.stringify(location, null, 2));
 
-      // Move the map camera to the location with animation
       this.map.animateCamera({
         target: location.latLng,
         zoom: 17,
         tilt: 30
       });
+
 
       // add a marker
       let marker: Marker = this.map.addMarkerSync({
@@ -83,7 +91,7 @@ export class MapPage implements OnInit {
       // show the infoWindow
       marker.showInfoWindow();
 
-     
+
     });
   }
 
@@ -97,22 +105,49 @@ export class MapPage implements OnInit {
     toast.present();
   }
 
-  info(){
-    alert("informações do local");
+
+  //alerta para salvar local
+  async save(){
+
+    this.local = (await this.geolocation.getCurrentPosition()).coords
+
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Salvar este local ?',
+      message: "latitude: "+String(this.lat)+"<br>longitude: "+this.lng,
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Salvar',
+          handler: () => {
+            alert.dismiss();
+            this.salvarCoords(this.local);
+            
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
-  save(){
-    alert("salvar coordenadas");
+  salvarCoords(loc) {
+    let cor = {
+      lat: loc.latitude,
+      lng: loc.longitude
+    }
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(cor)
+      }
+    };
+    this.router.navigate(['tabs/tab3'], navigationExtras);
   }
 
-  mylocation(){
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.coords = resp;
-      
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
-
-  }
- 
 }
