@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastController,Platform,LoadingController, AlertController} from '@ionic/angular';
 import {GoogleMaps,GoogleMap,GoogleMapsEvent,Marker,GoogleMapsAnimation,MyLocation, MarkerOptions} from '@ionic-native/google-maps';
-import {Polygon,BaseArrayClass,ILatLng,LatLng} from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import { Router, NavigationExtras } from '@angular/router';
@@ -9,7 +8,6 @@ import { Router, NavigationExtras } from '@angular/router';
 import { ViewChild, ElementRef, NgZone } from '@angular/core';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
-declare var google;
 
 
 @Component({
@@ -19,17 +17,9 @@ declare var google;
 })
 export class MapPage implements OnInit {
 
-
+  map: GoogleMap;
   loading: any;
-  
-  @ViewChild('map',  {static: false}) mapElement: ElementRef;
-  
-  map: any;
-  lat: string;
-  long: string;  
-
-  location: any;
-  local:any;
+  coords:any;
  
 
   constructor(private platform: Platform,
@@ -43,80 +33,86 @@ export class MapPage implements OnInit {
               ) { }
 
   async ngOnInit() {
+    // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
     await this.platform.ready();
     await this.loadMap();
-  }
-
-  async salvarLocal() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Deseja salvar esse local ?',
-      message: this.map.getCenter(),
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Salvar',
-          handler: () => {
-            this.salvarCoords(this.map.getCenter());
-          }
-        }
-      ]
-    });
-
-
-    await alert.present();
-  }
-
-  salvarCoords(local:any) {
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        special: JSON.stringify(local)
-      }
-    };
-    this.router.navigate(['/tabs/tab3'], navigationExtras);
-    console.log(navigationExtras)
-  }
-
-
-loadMap() {
-
-    //FIRST GET THE LOCATION FROM THE DEVICE.
-    this.geolocation.getCurrentPosition().then((resp) => {
-      let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-      let mapOptions = {
-        center: latLng,
-        zoom: 20,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      
-      }
-
-      //LOAD THE MAP WITH THE PREVIOUS VALUES AS PARAMETERS.
-      this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-        this.addMarker(this.map);
+    this.mylocation();
     
-    }).catch((error) => {
-      console.log('Error getting location', error);
+  }
+  loadMap() {
+
+    
+    this.map = GoogleMaps.create('map_canvas', {
+      camera: {
+        zoom: 300,
+        tilt: 30
+      }
+    });
+
+  }
+
+  async onButtonClick() {
+    this.map.clear();
+
+    this.loading = await this.loadingCtrl.create({
+      message: 'Please wait...'
+    });
+    await this.loading.present();
+
+    // Get the location of you
+    this.map.getMyLocation().then((location: MyLocation) => {
+      this.loading.dismiss();
+      console.log(JSON.stringify(location, null ,2));
+
+      // Move the map camera to the location with animation
+      this.map.animateCamera({
+        target: location.latLng,
+        zoom: 17,
+        tilt: 30
+      });
+
+      // add a marker
+      let marker: Marker = this.map.addMarkerSync({
+        title: 'Pragas aqui ?',
+        snippet: 'Esta é sua localização',
+        position: location.latLng,
+        animation: GoogleMapsAnimation.BOUNCE
+      });
+
+      // show the infoWindow
+      marker.showInfoWindow();
+
+     
     });
   }
 
+  async showToast(message: string) {
+    let toast = await this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: 'middle'
+    });
+
+    toast.present();
+  }
+
+  info(){
+    alert("informações do local");
+  }
+
+  save(){
+    alert("salvar coordenadas");
+  }
+
+  mylocation(){
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.coords = resp;
+      
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+
+  }
  
-  addMarker(map:any){
-  
-    let Marker = new google.maps.Marker({
-      title:"pragas",
-      map: map,
-      draggable:true,
-      animation: google.maps.Animation.BOUNCE,
-      position: map.getCenter()
-    });
-
-  }
 }
