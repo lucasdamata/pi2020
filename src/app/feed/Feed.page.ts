@@ -18,7 +18,7 @@ export class FeedPage {
 
   public coords: Array<{lat: -18.5872582,lng: -46.514674899999996}>;
   
-  
+  latitude:String = "";
 
 
   sliderOne: any;
@@ -31,7 +31,13 @@ export class FeedPage {
 
 
   public registros: any;
-  public registrosSalvos: Array<{id: any, nome: any, observacao: String, img: String, latitude:String, longitude:String}>;
+  public registrosSalvos: Array<{id: any, nome: any, 
+    observacao: String, img: String,
+    fazenda:string,
+    setor:string,
+    talhao:string,
+    variedade:string,
+     latitude:String, longitude:String}>;
 
 
   
@@ -75,8 +81,6 @@ export class FeedPage {
     this.registrosSalvos= [];
     this.showDataReg();
 
-    console.log(this.registrosSalvos[4]);
-
     setTimeout(() => {
       console.log('Async operation has ended');
       event.target.complete();
@@ -98,8 +102,12 @@ export class FeedPage {
             nome: data[i][1],
             observacao: data[i][2],
             img: data[i][3],
-            latitude: data[i][4],
-            longitude: data[i][5],
+            fazenda: data[i][4],
+            setor: data[i][5],
+            talhao: data[i][6],
+            variedade: data[i][7],
+            latitude: data[i][8],
+            longitude: data[i][9],
             
           });
         
@@ -111,9 +119,9 @@ export class FeedPage {
 
    
 
-   gotodetail(){
+   gotodetail(lat,lng){
 
-    let loc:any = {lat:this.registrosSalvos[5],lng:this.registrosSalvos[6]};
+    let loc:any = {lat:lat, lng:lng};
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
@@ -123,6 +131,12 @@ export class FeedPage {
     this.router.navigate(['mapsdetail'], navigationExtras);
     console.log(navigationExtras);
 
+   }
+
+
+
+   teste(lat){
+     console.log(lat);
    }
 
 

@@ -47,6 +47,10 @@
       Dentre as diferentes pragas que atacam a cultura, a broca-da-cana de açúcar, Diatraea saccharalis, é considerada a mais importante, devido a sua ampla distribuição geográfica e dos seus elevados prejuízos econômicos, com perdas diretas (redução da produtividade agrícola) e indiretas (perdas na qualidade da matéria-prima).
     </ion-card-content>
 
+    
+    <ion-input [hidden]='true' [(ngModel)]="latitude">{{reg.latitude}}</ion-input>
+    <ion-input [hidden]='true' [(ngModel)]="longitude">{{reg.longitude}}</ion-input>
+    
 
     <ion-footer>
       
@@ -58,7 +62,7 @@
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button color='success' expand="block" (click)="gotodetail()" >
+            <ion-button color='success' expand="block" (click)="gotodetail(reg.latitude, reg.longitude)" >
               Local
             </ion-button>
           </ion-col>
