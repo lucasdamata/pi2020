@@ -18,7 +18,7 @@ export class FeedPage {
 
   public coords: Array<{lat: -18.5872582,lng: -46.514674899999996}>;
   
-  loc:any = {lat:-19.006536,lng:-46.3135472};
+  
 
 
   sliderOne: any;
@@ -31,8 +31,10 @@ export class FeedPage {
 
 
   public registros: any;
-  public registrosSalvos: Array<{id: any, funcionario: any, observacao: String, img: String}>;
+  public registrosSalvos: Array<{id: any, nome: any, observacao: String, img: String, latitude:String, longitude:String}>;
 
+
+  
   constructor(public alertController: AlertController,
               public servidor: ServidorService,
               private router: Router,
@@ -83,18 +85,6 @@ export class FeedPage {
  
 
 
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Período de infestação: broca',
-      subHeader: 'Funcionario: "fulano" 1 min ago',
-      message: '"alerta selecionado pelo funcionario na pag 1"',
-      buttons: ['Mais detalhes']
-    });
-
-    await alert.present();
-  }
-
-
   showDataReg(){
     this.servidor.getDataPtyhon()
     .subscribe(
@@ -105,14 +95,17 @@ export class FeedPage {
           
           this.registrosSalvos.push({
             id: data[i][0],
-            funcionario: data[i][1],
+            nome: data[i][1],
             observacao: data[i][2],
             img: data[i][3],
+            latitude: data[i][4],
+            longitude: data[i][5],
             
           });
         
           this.registros = this.registrosSalvos;
-        } }, err => console.log(err)
+        }
+       }, err => console.log(err)
     );
    }
 
@@ -120,7 +113,7 @@ export class FeedPage {
 
    gotodetail(){
 
-    let loc = this.loc;
+    let loc:any = {lat:this.registrosSalvos[5],lng:this.registrosSalvos[6]};
 
     let navigationExtras: NavigationExtras = {
       queryParams: {

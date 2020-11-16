@@ -13,13 +13,9 @@ import {
   MyLocation
 } from '@ionic-native/google-maps';
 import { LoadingController, NavController, NavParams, Platform, ToastController } from '@ionic/angular';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
 
 declare var google;
-
-
 
 @Component({
   selector: 'app-mapsdetail',
@@ -37,8 +33,6 @@ constructor(public navCtrl: NavController,
             public navParams: NavParams,
             public loadingCtrl: LoadingController,
             private platform: Platform,
-            private geolocation: Geolocation,
-            private nativeGeocoder: NativeGeocoder,
             public route: ActivatedRoute,
             public router: Router,) {
 
@@ -57,6 +51,7 @@ async ngOnInit() {
     this.local = this.route.queryParams.subscribe(params => {
       if (params && params.special) {
         this.local = JSON.parse(params.special);
+        console.log(this.local.lat)
      
       }
       console.log(this.local.lat);
@@ -83,10 +78,8 @@ async ngOnInit() {
         }
       });
     
-
     }); 
 
   }
- 
  
 }

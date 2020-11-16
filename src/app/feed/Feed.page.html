@@ -19,14 +19,15 @@
       refreshingSpinner="circles" refreshingText="Carregando...">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-card>
+
+  <ion-card *ngFor="let reg of registrosSalvos">
 
     <ion-item>
       <ion-avatar slot="start">
         <img src="../../assets/images/cupim.jpg">
       </ion-avatar>
       <ion-label>
-        <h3>Nome do Funcionario</h3>
+        <h3>{{reg.nome}}</h3>
         <p>Data: 13/11/2020</p>
         <p>Horário: 16:45:12</p>
       </ion-label>

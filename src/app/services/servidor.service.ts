@@ -12,7 +12,7 @@ export class ServidorService {
 
   
   url : String = "http://localhost/dados/";
-  api : String = "http://192.168.6.78:5000/"
+  api : String = "http://127.0.0.1:5000/"
 
   constructor(public http : HttpClient) { }
 

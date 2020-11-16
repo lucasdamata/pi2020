@@ -25,6 +25,12 @@ export class Tab3Page {
 
   funcionario: String = '';
   observacao: String = '';
+  fazenda:String = '';
+  setor:String = '';
+  talhao:string = '';
+  variedade:string = '';
+  latitude:String= '';
+  longitude:String = '';
   img: String = '';
   local:any;
   lat:any;
@@ -53,8 +59,8 @@ export class Tab3Page {
       this.local = this.route.queryParams.subscribe(params => {
         if (params && params.special) {
           this.local = JSON.parse(params.special);
-          this.lat = this.local.lat;
-          this.lng = this.local.lng;
+          this.latitude = this.local.lat;
+          this.longitude = this.local.lng;
          
         }
 
@@ -128,6 +134,7 @@ export class Tab3Page {
     });
   }
   sendPostRequest() {
+
     const headers = new HttpHeaders().set('Content-Type', 'application/json')
                                  .set('Accept', 'application/json')
                                  .set('Access-Control-Allow-Origin', 'http://localhost:8100')
@@ -139,8 +146,16 @@ export class Tab3Page {
     let postData = {
       "funcionario": this.funcionario,
       "observacao": this.observacao,
-      "img": "ok"
+      "img": "ok",
+      "fazenda": this.fazenda,
+      "setor": this.setor,
+      "talhao": this.talhao,
+      "variedade": this.variedade,
+      "latitude": this.latitude,
+      "longitude": this.longitude
     }
+  
+  
     this.http.post("http://127.0.0.1:5000/registros", postData, { headers: headers }).subscribe(res=> {
 
       console.log(res);
@@ -150,6 +165,8 @@ export class Tab3Page {
       console.log(error.status)
     });
 }
+
+
 
   async presentLoading() {
     const loading = await this.loadingController.create({

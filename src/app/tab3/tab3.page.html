@@ -17,7 +17,7 @@
 
     <ion-item>
       <ion-label position="floating" >Fazenda:</ion-label>
-      <ion-input type="text" [(ngModel)]="cdFazenda" placeholder="código da fazenda"></ion-input>
+      <ion-input type="text" [(ngModel)]="fazenda" placeholder="código da fazenda"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -32,7 +32,7 @@
 
     <ion-item>
       <ion-label position="floating">Variedade:</ion-label>
-      <ion-input type="text" [(ngModel)]="variedade"></ion-input>
+      <ion-input type="text" [(ngModel)]="variedade" ></ion-input>
     </ion-item>
 
     <ion-item>
@@ -42,7 +42,8 @@
 
 
     <ion-item>
-      <ion-input type="text"  disabled>Lat: {{lat}}, Lng: {{lng}}</ion-input>
+      <ion-input type="text" [(ngModel)]="latitude" disabled>Lat: {{lat}}</ion-input>
+      <ion-input type="text" [(ngModel)]="longitude" disabled>Lng: {{lng}}></ion-input>
     </ion-item>
 
 
@@ -69,9 +70,6 @@
 
 
   <img [src]="capturedSnapURL"/>
-<ion-button (click)="teste()">
-  teste
-</ion-button>
 
 
 </ion-content>

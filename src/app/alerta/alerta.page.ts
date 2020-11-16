@@ -22,11 +22,14 @@ export class AlertaPage implements OnInit {
 
   funcionario: String ='';
   observacao: String = '';
+  fazenda:String = '';
+  setor:String = '';
+  talhao:string = '';
+  veriedade:string = '';
+  latitude:string = '';
+  longitude:string = '';
 
 
-
-  
-  
   alertForm = this.formBuilder.group({
     funcionario: [''],
     infestacao: [''],
@@ -41,9 +44,6 @@ export class AlertaPage implements OnInit {
               public loadingController: LoadingController,
               public camera: Camera) { }
   
- 
-
-
  
   ngOnInit() {
   }
@@ -70,9 +70,16 @@ export class AlertaPage implements OnInit {
     };
 
     let postData = {
-            "funcionario": this.funcionario,
-            "observacao": this.observacao,
-                   
+      "nome": this.funcionario,
+      "observacao": this.observacao,
+      "img": "teste",
+      "fazenda": this.fazenda,
+      "setor": this.setor,
+      "talhao": this.talhao,
+      "variedade": this.veriedade,
+      "latitude": this.latitude,
+      "longitude": this.longitude
+             
     }
 
     this.http.post("http://127.0.0.1:5000/registros", postData, {headers:headers})
