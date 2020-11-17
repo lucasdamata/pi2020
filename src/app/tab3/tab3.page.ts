@@ -146,7 +146,7 @@ export class Tab3Page {
     let postData = {
       "funcionario": this.funcionario,
       "observacao": this.observacao,
-      "img": "ok",
+      "img": this.capturedSnapURL,
       "fazenda": this.fazenda,
       "setor": this.setor,
       "talhao": this.talhao,
@@ -156,9 +156,10 @@ export class Tab3Page {
     }
   
   
-    this.http.post("http://127.0.0.1:5000/registros", postData, { headers: headers }).subscribe(res=> {
+    this.http.post("http://127.0.0.1:5000//registros", postData, { headers: headers }).subscribe(res=> {
 
-      console.log(res);
+      this.presentLoading();
+      
 
      }, error => {
      // this.presentAlert("não foi possível processar suas informações")
@@ -166,18 +167,16 @@ export class Tab3Page {
     });
 }
 
-
-
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Aguarde, enviando dados...',
-      duration: 1000
+      duration: 3000
     });
-    await loading.present();
 
-    const { role, data } = await loading.onDidDismiss();
+    await loading.present();
     console.log('Loading dismissed!');
+    this.router.navigate(['tabs/Feed']);
   }
 
 

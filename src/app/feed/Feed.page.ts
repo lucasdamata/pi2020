@@ -5,6 +5,8 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 
 import {ServidorService} from '../services/servidor.service';
+import { identifierModuleUrl } from '@angular/compiler';
+
 
 
 @Component({
@@ -15,12 +17,9 @@ import {ServidorService} from '../services/servidor.service';
 export class FeedPage {
 
   @ViewChild('slideWithNav', { static: false }) slideWithNav: IonSlides;
-
-  public coords: Array<{lat: -18.5872582,lng: -46.514674899999996}>;
   
-  latitude:String = "";
-
-
+  
+  public onlineOffline: boolean = navigator.onLine;
   sliderOne: any;
 
   slideOptsOne = {
@@ -28,6 +27,11 @@ export class FeedPage {
     slidesPerView: 1,
     autoplay: true
   };
+
+  public pragas: any;
+  public pragasSearch: Array<{id: any,nome: any, img: String, combate: String}>;
+  public pragasAll: Array<{id: any,nome: any, img: String, combate: String}>;
+
 
 
   public registros: any;
@@ -37,14 +41,15 @@ export class FeedPage {
     setor:string,
     talhao:string,
     variedade:string,
-     latitude:String, longitude:String}>;
+    latitude:String, longitude:String,
+    pragaid:string}>;
 
 
   
   constructor(public alertController: AlertController,
               public servidor: ServidorService,
               private router: Router,
-              private route: ActivatedRoute ) {
+              private route: ActivatedRoute,) {
 
                 this.sliderOne =
                 {
@@ -66,29 +71,37 @@ export class FeedPage {
                   ]
                 };
 
-    
+
+                if (!navigator.onLine) {
+                  alert("sem internet bro");
+                  }
+               
   }
 
   async ngOnInit() {
     
     this.registros = await this.showDataReg();
     this.registrosSalvos= [];
-    
-    
+    await this.showDataPragas();
+
   }
+
 
   doRefresh(event) {
     this.registrosSalvos= [];
     this.showDataReg();
 
+    if (!navigator.onLine) {
+      alert("sem net bro...");
+      }
+
     setTimeout(() => {
       console.log('Async operation has ended');
       event.target.complete();
     }, 3000);
+
   }
  
-
-
   showDataReg(){
     this.servidor.getDataPtyhon()
     .subscribe(
@@ -108,6 +121,7 @@ export class FeedPage {
             variedade: data[i][7],
             latitude: data[i][8],
             longitude: data[i][9],
+            pragaid: data[i][10],
             
           });
         
@@ -117,12 +131,30 @@ export class FeedPage {
     );
    }
 
+
+showDataPragas(){
+    this.servidor.getData()
+    .subscribe(
+      data => {
+        
+        this.pragas = data;
+        let tamanho = Object.keys(data).length;
+        for(let i=0; i < tamanho; i++ ){
+          this.pragasSearch.push({
+            id: data[i]["id"],
+            nome: data[i]["nome"],
+            img: data[i]["img"],
+            combate: data[i]["combate"],
+          });
+        
+          this.pragasAll = this.pragasSearch;
+        } }, err => console.log(err)
+    );
+   }
+
    
-
-   gotodetail(lat,lng){
-
+   positionDetail(lat,lng){
     let loc:any = {lat:lat, lng:lng};
-
     let navigationExtras: NavigationExtras = {
       queryParams: {
         special:JSON.stringify(loc)
@@ -134,9 +166,26 @@ export class FeedPage {
    }
 
 
+   regDetail(funcionario, pragaId,id,fazenda,talhao,setor,observacao,variedade){
+     
+    let payload = {
+      funcionario:funcionario,
+      id: id,
+      observacao: observacao,
+      fazenda: fazenda,
+      setor: setor,
+      talhao: talhao,
+      variedade: variedade,
+      pragaid: pragaId,
+    }
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special:JSON.stringify(payload)
+      }
+    };
+    this.router.navigate(['detalhes-registro'], navigationExtras);
+    console.log(navigationExtras);
 
-   teste(lat){
-     console.log(lat);
    }
 
 

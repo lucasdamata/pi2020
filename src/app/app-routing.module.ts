@@ -25,6 +25,10 @@ const routes: Routes = [
     path: 'mapsdetail',
     loadChildren: () => import('./mapsdetail/mapsdetail.module').then( m => m.MapsdetailPageModule)
   },
+  {
+    path: 'detalhes-registro',
+    loadChildren: () => import('./detalhes-registro/detalhes-registro.module').then( m => m.DetalhesRegistroPageModule)
+  },
 
  
 

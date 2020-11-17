@@ -41,10 +41,10 @@
     </ion-slides>
 
     <ion-card-header>
-      <ion-card-title>Broca da Cana - Diatraea saccharalis</ion-card-title>
+      <ion-card-title>Nome da praga detectada</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      Dentre as diferentes pragas que atacam a cultura, a broca-da-cana de açúcar, Diatraea saccharalis, é considerada a mais importante, devido a sua ampla distribuição geográfica e dos seus elevados prejuízos econômicos, com perdas diretas (redução da produtividade agrícola) e indiretas (perdas na qualidade da matéria-prima).
+      estamos em constante estudo para trazer a melhor informação sobre a praga detectada
     </ion-card-content>
 
     
@@ -57,12 +57,12 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-button color='success' expand="block">
+            <ion-button (click)="regDetail(reg.nome, reg.pragaid, reg.id, reg.fazenda,reg.talhaoreg.setor,reg.observacao,reg.variedade)" color='success' expand="block">
               Detalhes
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button color='success' expand="block" (click)="gotodetail(reg.latitude, reg.longitude)" >
+            <ion-button color='success' expand="block" (click)="positionDetail(reg.latitude, reg.longitude)" >
               Local
             </ion-button>
           </ion-col>
@@ -71,8 +71,5 @@
     </ion-grid>
     </ion-footer>
   </ion-card>
-
-
-
 
 </ion-content>
