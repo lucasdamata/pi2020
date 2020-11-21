@@ -35,7 +35,8 @@ export class FeedPage {
 
 
   public registros: any;
-  public registrosSalvos: Array<{id: any, nome: any, 
+  public registrosSalvos: Array<{id: any,
+    nome: any, 
     observacao: String, img: String,
     fazenda:string,
     setor:string,
@@ -73,7 +74,7 @@ export class FeedPage {
 
 
                 if (!navigator.onLine) {
-                  alert("sem internet bro");
+                  alert("Esse recurso necessita de internet!");
                   }
                
   }
@@ -86,13 +87,12 @@ export class FeedPage {
 
   }
 
-
   doRefresh(event) {
     this.registrosSalvos= [];
     this.showDataReg();
 
     if (!navigator.onLine) {
-      alert("sem net bro...");
+      alert("É necessario uma conexão para carregar...");
       }
 
     setTimeout(() => {
@@ -151,8 +151,6 @@ showDataPragas(){
         } }, err => console.log(err)
     );
    }
-
-   
    positionDetail(lat,lng){
     let loc:any = {lat:lat, lng:lng};
     let navigationExtras: NavigationExtras = {

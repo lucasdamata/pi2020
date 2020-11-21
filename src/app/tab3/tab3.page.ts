@@ -156,11 +156,9 @@ export class Tab3Page {
     }
   
   
-    this.http.post("http://127.0.0.1:5000//registros", postData, { headers: headers }).subscribe(res=> {
+    this.http.post("https://dcec80155101.ngrok.io/registros", postData, { headers: headers }).subscribe(res=> {
 
-      this.presentLoading();
       
-
      }, error => {
      // this.presentAlert("não foi possível processar suas informações")
       console.log(error.status)
@@ -170,7 +168,7 @@ export class Tab3Page {
   async presentLoading() {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Aguarde, enviando dados...',
+      message: 'Aguarde, enviando e processando dados...',
       duration: 3000
     });
 

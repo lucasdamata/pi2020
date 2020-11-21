@@ -63,7 +63,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button color="success" expand="block" (click)="sendPostRequest()">
+  <ion-button color="success" expand="block" (click)="sendPostRequest()" (click)="presentLoading()">
     <ion-icon slot="end" name="create"></ion-icon>
     ENVIAR
   </ion-button>

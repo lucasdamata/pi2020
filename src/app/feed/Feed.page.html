@@ -24,27 +24,26 @@
 
     <ion-item>
       <ion-avatar slot="start">
-        <img src="../../assets/images/cupim.jpg">
+        <img src="../../assets/images/avatar.jpg">
       </ion-avatar>
       <ion-label>
         <h3>{{reg.nome}}</h3>
-        <p>Data: 13/11/2020</p>
-        <p>Horário: 16:45:12</p>
+        <p>Data: 19/11/2020</p>
       </ion-label>
     </ion-item>
 
     <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav>
       <ion-slide *ngFor="let s of sliderOne.slidesItems">
-        <img src="../../assets/images/cupim/{{s.id}}.jpg">
+        <img src="../../assets/images/{{reg.pragaid}}/{{s.id}}.jpg">
         <span class="slide-text">imagem {{s.id}}</span>
       </ion-slide>
     </ion-slides>
 
     <ion-card-header>
-      <ion-card-title>Nome da praga detectada</ion-card-title>
+      <ion-card-title>Nova Praga Detectada!</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      estamos em constante estudo para trazer a melhor informação sobre a praga detectada
+      estamos em constante estudo para trazer a melhor informação sobre esta praga
     </ion-card-content>
 
     
@@ -57,7 +56,7 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-button (click)="regDetail(reg.nome, reg.pragaid, reg.id, reg.fazenda,reg.talhaoreg.setor,reg.observacao,reg.variedade)" color='success' expand="block">
+            <ion-button (click)="regDetail(reg.nome, reg.pragaid, reg.id, reg.fazenda,reg.talhao, reg.setor, reg.observacao,reg.variedade)" color='success' expand="block">
               Detalhes
             </ion-button>
           </ion-col>

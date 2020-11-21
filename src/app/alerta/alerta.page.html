@@ -9,6 +9,8 @@
 </ion-header>
 
 <ion-content>
+
+  
   <form [formGroup]="alertForm" (ngSubmit) = "send()">
     <ion-list>
 
@@ -16,6 +18,7 @@
         <ion-label position="floating">Funcionário: </ion-label>
         <ion-input formControlName="funcionario" [(ngModel)]="funcionario" text-right id="input"></ion-input>
       </ion-item>
+
 
       <ion-item>
         <ion-label>Talhão</ion-label>
@@ -57,9 +60,6 @@
         Enviar
         <ion-icon slot="end" name="create"></ion-icon>
       </ion-button>
-
-
-
 
     </ion-list>
     

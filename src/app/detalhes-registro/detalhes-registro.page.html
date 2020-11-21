@@ -7,14 +7,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
 
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Aqui serão inseridos dados da praga identificada</ion-card-title>
+      <ion-card-title>imagem e dados da praga (estamos trabalhando para entregar o melhor conteúdo)</ion-card-title>
     </ion-card-header>
-  
+
+    <ion-card-content>
+      
+
+      {{registro.observacao}}
+
+    </ion-card-content>
+
   </ion-card>
 
   <ion-list>
@@ -23,17 +30,22 @@
       <ion-label>{{registro.funcionario}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Mega Man X</ion-label>
+      <ion-label>Fazenda:</ion-label>
+      <ion-label>{{registro.fazenda}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>The Legend of Zelda</ion-label>
+      <ion-label>Talhão:</ion-label>
+      <ion-label>{{registro.talhao}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Pac-Man</ion-label>
+      <ion-label>Setor:</ion-label>
+      <ion-label>{{registro.setor}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label>Super Mario World</ion-label>
+      <ion-label>Variedade:</ion-label>
+      <ion-label>{{registro.variedade}}</ion-label>
     </ion-item>
+
   </ion-list>
 
 

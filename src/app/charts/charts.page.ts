@@ -65,7 +65,7 @@ export class ChartsPage implements OnInit {
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: "doughnut",
       data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["Bicudo", "Broca", "Sauva", "Cupim", "Cigarrinha"],
         datasets: [
           {
             label: "Ocorrencias por quantidade",
