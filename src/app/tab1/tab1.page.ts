@@ -33,7 +33,7 @@ export class Tab1Page {
   }
 
   async ngOnInit() {
-    this.pragas = await this.showData();
+    this.pragas =  this.showData();
     this.pragasSearch= [];
     
   }

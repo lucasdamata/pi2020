@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
 import {map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,10 @@ export class ServidorService {
 
   getDataPtyhon(){
     return this.http.get(this.api+"registros").pipe(map(res => res.valueOf()));
+  }
+
+  getDataTeste(): Observable<any>{
+
+    return this.http.get(this.url+"banco.php").pipe(map(res => res.valueOf()));
   }
 }

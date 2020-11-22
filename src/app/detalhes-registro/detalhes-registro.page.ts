@@ -5,6 +5,9 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 import { ServidorService } from '../services/servidor.service';
+import { Observable } from 'rxjs';
+import { promise } from 'protractor';
+import { database } from 'firebase';
 
 
 
@@ -17,16 +20,16 @@ import { ServidorService } from '../services/servidor.service';
 export class DetalhesRegistroPage implements OnInit {
 
   image:string = '';
+  url = 'http://localhost/dados/banco.php';
 
-
+  
   registro: any;
-  teste: any;
   final: any;
+  teste:any;
 
   public praga: any;
-  public pragasSearch: Array<{ id: any, nome: any, img: String, combate: String }>;
+  public pragasSearch: Array<{ id: any, nome: any, img: string, combate: String }>;
   public pragasAll: Array<{ id: any, nome: any, img: String, combate: String }>;
-
 
 
   constructor(
@@ -45,44 +48,17 @@ export class DetalhesRegistroPage implements OnInit {
     });
 
 
-    if(this.registro.pragaid == 2){
-      this.image ="../../assets/"
-    }
+   this.final = this.http.get(this.url).subscribe(resp =>{
+     this.final = resp[this.registro.pragaid -1];
+    
+   })
 
-
-
-
+        
   }
 
   ngOnInit() {
-   this.pragasSearch = [];
-   this.showDataPragas();
-
 
   }
-
-  showDataPragas() {
-  this.servidor.getData()
-      .subscribe(
-        data => {
-         
-          this.praga = data;
-
-          let i = this.registro.pragaid -1;
-            this.pragasSearch.push({
-              id: data[i]["id"],
-              nome: data[i]["nome"],
-              img: data[i]["img"],
-              combate: data[i]["combate"],
-            });
-
-
-        }, err => console.log(err)
-      );
-  }
-
-
-
 
 
 

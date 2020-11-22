@@ -5,7 +5,7 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 
 import {ServidorService} from '../services/servidor.service';
-import { identifierModuleUrl } from '@angular/compiler';
+
 
 
 
@@ -81,9 +81,9 @@ export class FeedPage {
 
   async ngOnInit() {
     
-    this.registros = await this.showDataReg();
+    this.registros = this.showDataReg();
     this.registrosSalvos= [];
-    await this.showDataPragas();
+    this.showDataPragas();
 
   }
 
