@@ -29,6 +29,10 @@ const routes: Routes = [
     path: 'detalhes-registro',
     loadChildren: () => import('./detalhes-registro/detalhes-registro.module').then( m => m.DetalhesRegistroPageModule)
   },
+  {
+    path: 'selecionar-cultura',
+    loadChildren: () => import('./selecionar-cultura/selecionar-cultura.module').then( m => m.SelecionarCulturaPageModule)
+  },
 
  
 

@@ -15,6 +15,8 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-button color="success" routerLink="/selecionar-cultura" expand="block" fill="outline">cultura</ion-button>
+
   <ion-card *ngFor="let praga of pragasSearch">
     <img src="{{praga.img}}" (click)="detalhe(praga)" />
     <ion-card-header>
