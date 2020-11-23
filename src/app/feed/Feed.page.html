@@ -22,37 +22,23 @@
 
 
 
-  <ion-card>
-    <h2>Carmo do Paranaíba</h2>
-      <h3>nublado<span>vento 10km/h <span class="dot">•</span> precip 80%</span></h3>
-      <h2>23°</h2>
-      <div class="sky">
-          <div class="sun"></div>
-          <div class="cloud">
-              <div class="circle-small"></div>
-              <div class="circle-tall"></div>
-              <div class="circle-medium"></div>
-          </div>
-      </div>
-  </ion-card>
 
+  <ion-card *ngFor="let reg of registrosSalvos" class="block">
 
-
-  <ion-card *ngFor="let reg of registrosSalvos">
-
-    <ion-item>
+    <ion-item class="block">
       <ion-avatar slot="start">
         <img src="../../assets/images/avatar.jpg">
       </ion-avatar>
       <ion-label>
-        <h3>{{reg.nome}}</h3>
+        <h3 class="block">{{reg.nome}}</h3>
         <p>Data: 19/11/2020</p>
+        <p>Hora: 15:30:56</p>
       </ion-label>
     </ion-item>
 
-    <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav>
-      <ion-slide *ngFor="let s of sliderOne.slidesItems">
-        <img src="../../assets/images/{{reg.pragaid}}/{{s.id}}.jpg">
+    <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav class="block">
+      <ion-slide *ngFor="let s of sliderOne.slidesItems" class="block">
+        <img src="../../assets/images/{{reg.pragaid}}/{{s.id}}.jpg" class="block">
         <span class="slide-text">imagem {{s.id}}</span>
       </ion-slide>
     </ion-slides>

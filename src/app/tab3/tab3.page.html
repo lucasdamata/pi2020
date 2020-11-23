@@ -9,42 +9,47 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+
+  <form [formGroup]="fgroup">
   
     <ion-item>
       <ion-label position="floating">Funcionário:</ion-label>
-      <ion-input type="text" [(ngModel)]="funcionario"></ion-input>
+      <ion-input type="text"  formControlName="funcionario"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" >Fazenda:</ion-label>
-      <ion-input type="text" [(ngModel)]="fazenda" placeholder="código da fazenda"></ion-input>
+      <ion-input type="text"  placeholder="código da fazenda" formControlName="fazenda"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Setor:</ion-label>
-      <ion-input type="text" [(ngModel)]="setor"></ion-input>
+      <ion-input type="text"  formControlName="setor"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Talhão:</ion-label>
-      <ion-input type="text" [(ngModel)]="talhao"></ion-input>
+      <ion-input type="text"  formControlName="talhao"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Variedade:</ion-label>
-      <ion-input type="text" [(ngModel)]="variedade" ></ion-input>
+      <ion-input type="text"  formControlName="variedade"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Observação:</ion-label>
-      <ion-input type="text" [(ngModel)]="observacao"></ion-input>
+      <ion-input type="text"  formControlName="observacao"></ion-input>
     </ion-item>
 
 
     <ion-item>
-      <ion-input type="text" [(ngModel)]="latitude" disabled>Lat: {{lat}}</ion-input>
-      <ion-input type="text" [(ngModel)]="longitude" disabled>Lng: {{lng}}</ion-input>
+      <ion-input type="text" [(ngModel)]="latitude" formControlName="latitude" >Lat: {{lat}}</ion-input>
+      <ion-input type="text" [(ngModel)]="longitude" formControlName="longitude">Lng: {{lng}}</ion-input>
     </ion-item>
+
+  </form>
 
 
   <ion-grid>
@@ -63,7 +68,7 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button color="success" expand="block" (click)="sendPostRequest()" (click)="presentLoading()">
+  <ion-button color="success" expand="block" (click)="submit()" [disabled]="! fgroup.valid">
     <ion-icon slot="end" name="create"></ion-icon>
     ENVIAR
   </ion-button>

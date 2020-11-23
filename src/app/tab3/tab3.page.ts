@@ -11,6 +11,7 @@ import { AlertController } from '@ionic/angular';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tab3',
@@ -35,6 +36,8 @@ export class Tab3Page {
   local:any;
   lat:any;
   lng:any;
+
+  public fgroup: FormGroup;
   
 
   capturedSnapURL:any;
@@ -53,7 +56,8 @@ export class Tab3Page {
     public toastCtrl: ToastController,
     public alertController: AlertController,
     public route: ActivatedRoute,
-    public router: Router,) {
+    public router: Router,
+    public fbuilder: FormBuilder) {
 
 
       this.local = this.route.queryParams.subscribe(params => {
@@ -118,9 +122,46 @@ export class Tab3Page {
         "obs": "dificilmente combatida"
       },
     ]
+
+
+    this.fgroup = this.fbuilder.group({
+      'funcionario': [this.funcionario, Validators.compose([
+        Validators.required
+      ])],
+
+      'fazenda': [this.fazenda, Validators.compose([
+        Validators.required
+      ])],
+      'setor': [this.setor, Validators.compose([
+        Validators.required
+      ])],
+      'talhao': [this.talhao, Validators.compose([
+        Validators.required
+      ])],
+      'variedade': [this.variedade, Validators.compose([
+        Validators.required
+      ])],
+      'observacao': [this.observacao, Validators.compose([
+        Validators.required
+      ])],
+      'latitude': [this.latitude, Validators.compose([
+        Validators.required
+      ])],
+      'longitude': [this.longitude, Validators.compose([
+        Validators.required
+      ])],
+
+    });
   }
   
 
+
+
+   submit(){
+
+    console.log(this.fgroup.value);
+
+   }
 
 
    takePicture() {
