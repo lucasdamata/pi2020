@@ -8,7 +8,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { LoadingController, ToastController} from '@ionic/angular';
 
 import { AlertController } from '@ionic/angular';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, observeOn } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -156,14 +156,6 @@ export class Tab3Page {
   
 
 
-
-   submit(){
-
-    console.log(this.fgroup.value);
-
-   }
-
-
    takePicture() {
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
 
@@ -185,37 +177,39 @@ export class Tab3Page {
                                  
 
     let postData = {
-      "funcionario": this.funcionario,
-      "observacao": this.observacao,
-      "img": this.capturedSnapURL,
-      "fazenda": this.fazenda,
-      "setor": this.setor,
-      "talhao": this.talhao,
-      "variedade": this.variedade,
-      "latitude": this.latitude,
-      "longitude": this.longitude
+      "funcionario": this.fgroup.value.funcionario,
+      "observacao": this.fgroup.value.observacao,
+      "img": "teste",
+      "fazenda": this.fgroup.value.fazenda,
+      "setor": this.fgroup.value.setor,
+      "talhao": this.fgroup.value.talhao,
+      "variedade": this.fgroup.value.variedade,
+      "latitude": this.fgroup.value.funcionario,
+      "longitude": this.fgroup.value.funcionario
     }
   
   
-    this.http.post("https://dcec80155101.ngrok.io/registros", postData, { headers: headers }).subscribe(res=> {
-
+    this.http.post("http://127.0.0.1:5000/registros", postData, { headers: headers }).subscribe(res=> {
+      
+    this.presentLoading('Aguarde, enviando e processando dados...');
+    this.fgroup.reset();
+    this.router.navigate(['tabs/Feed']);
       
      }, error => {
-     // this.presentAlert("não foi possível processar suas informações")
-      console.log(error.status)
+      this.presentLoading("Algo deu errado, tente novamente")
+      console.log(error);
     });
 }
 
-  async presentLoading() {
+  async presentLoading(msg) {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Aguarde, enviando e processando dados...',
+      message: msg,
       duration: 3000
     });
 
     await loading.present();
     console.log('Loading dismissed!');
-    this.router.navigate(['tabs/Feed']);
   }
 
 
