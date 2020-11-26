@@ -1,15 +1,15 @@
 <ion-header color="light">
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false"></ion-menu-button>
+      <ion-back-button ></ion-back-button>
     </ion-buttons>
-    <ion-buttons slot="primary">
-    </ion-buttons>
+
+    <ion-menu-button auto-hide="false" slot="end"></ion-menu-button>
+
     <ion-title>Identificar Praga</ion-title>
   </ion-toolbar>
 
-  <ion-searchbar placeholder="Pesquisar praga" showCancelButton="always" animated (ionChange)="onSearchTerm($event)">
-  </ion-searchbar>
+  <ion-searchbar placeholder="Pesquisar praga" showCancelButton="always" animated (ionChange)="onSearchTerm($event)"> </ion-searchbar>
 
 </ion-header>
 
@@ -22,9 +22,9 @@
     <ion-card-header>
       <ion-card-title (click)="detalhe(praga)"><u>{{praga.nome}}</u></ion-card-title>
     </ion-card-header>
-      <ion-card-content>
-       {{praga.combate}}
-      </ion-card-content>
+    <ion-card-content>
+      {{praga.combate}}
+    </ion-card-content>
 
     <ion-button color="success" routerLink="/alerta" expand="block" fill="outline">Gerar alerta</ion-button>
   </ion-card>

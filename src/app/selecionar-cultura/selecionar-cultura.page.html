@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+      <ion-back-button></ion-back-button>
 
     </ion-buttons>
     <ion-title>selecionar cultura</ion-title>
@@ -12,42 +12,78 @@
 <ion-content>
 
 
-  
-
-    <div class="container">
-      <div class="background">
-        <div class="Circle1"></div>
-        <div class="Circle2"></div>
-        <div class="Circle3"></div>
-        <div class="content">
-          <h1 class="Condition">Carmo do Paranaíba</h1>
-          <h1 class="Temp">23<span id="F">&#8451;</span></h1>
-          <h1 class="Time">20:36</h1>
-          <h1 class="Location"><i class="material-icons locationIcon">Local </i>MG</h1>
-        </div>
+  <div class="container">
+    <div class="background">
+      <div class="Circle1"></div>
+      <div class="Circle2"></div>
+      <div class="Circle3"></div>
+      <div class="content">
+        <h1 class="Condition">Carmo do Paranaíba</h1>
+        <h1 class="Temp">23<span id="F">&#8451;</span></h1>
+        <h1 class="Time">20:36</h1>
+        <h1 class="Location"><i class="material-icons locationIcon">Local </i>MG</h1>
       </div>
     </div>
+  </div>
+
+  <br>
 
 
   <ion-grid>
     <ion-row>
-      <ion-col>
-        <ion-card>
-          <img src="https://st2.depositphotos.com/1874273/11962/v/600/depositphotos_119625466-stock-illustration-vector-sugar-cane-cartoon-illustration.jpg" />
-          <ion-card-header>
-            <ion-card-subtitle>Cana de açucar</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
+      <ion-col style="text-align: center;">
+        <ion-button (click)="cana()">
+          cana
+        </ion-button>
       </ion-col>
-      <ion-col>
-        <ion-card>
-          <img src="https://cdn.pixabay.com/photo/2013/07/13/01/15/coffee-beans-155378_960_720.png" />
-          <ion-card-header>
-            <ion-card-subtitle>Café</ion-card-subtitle>
-          </ion-card-header>
-        </ion-card>
+      <ion-col style="text-align: center;">
+        <ion-button>
+          café
+        </ion-button>
       </ion-col>
     </ion-row>
+
+    <br>
+
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-button>
+          alho
+        </ion-button>
+      </ion-col>
+      <ion-col style="text-align: center;">
+        <ion-button>
+          abacate
+        </ion-button>
+      </ion-col>
+    </ion-row>
+<br>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-button>
+          beterraba
+        </ion-button>
+      </ion-col>
+      <ion-col style="text-align: center;">
+        <ion-button>
+          cenoura
+        </ion-button>
+      </ion-col>
+    </ion-row>
+<br>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <ion-button>
+          repolho
+        </ion-button>
+      </ion-col>
+      <ion-col style="text-align: center;">
+        <ion-button>
+          café
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
 
