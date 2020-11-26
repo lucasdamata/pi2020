@@ -42,7 +42,7 @@ export class MapsdetailPage implements OnInit {
     // Since ngOnInit() is executed before `deviceready` event,
     // you have to wait the event.
     await this.platform.ready();
-    await this.loadMap();
+    this.loadMap();
 
   }
 
