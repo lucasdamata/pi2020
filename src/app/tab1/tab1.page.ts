@@ -41,6 +41,7 @@ export class Tab1Page {
     this.pragas =  this.showData();
     this.pragasSearch= [];
     console.log(this.page);
+    console.log("oi");
     
   }
 
