@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 @Component({
   selector: 'app-selecionar-cultura',
   templateUrl: './selecionar-cultura.page.html',
   styleUrls: ['./selecionar-cultura.page.scss'],
 })
 export class SelecionarCulturaPage implements OnInit {
+
+
+cana:string= 'cana';  
 
   constructor(public route: ActivatedRoute,
               public router: Router,
@@ -15,8 +18,13 @@ export class SelecionarCulturaPage implements OnInit {
   }
 
 
-  cana(){
-    this.router.navigate(['tabs/tab1']);
+  canaPage(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.cana)
+      }
+    };
+    this.router.navigate(['tabs/tab1'], navigationExtras);
   }
 
   café(){
@@ -47,6 +55,13 @@ export class SelecionarCulturaPage implements OnInit {
     this.router.navigate(['tabs/tab1']);
   }
 
-
+  detalhe(praga:any) {
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(praga)
+      }
+    };
+    this.router.navigate(['detalhes'], navigationExtras);
+  }
 
 }

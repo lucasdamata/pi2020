@@ -15,7 +15,7 @@ import {ServidorService} from '../services/servidor.service';
 export class Tab1Page {
   alertController: any;
   
-  page:string = "tab1";
+  page:any;
 
   public pragas: any;
   public pragasSearch: Array<{id: any,nome: any, img: String, combate: String}>;
@@ -29,12 +29,18 @@ export class Tab1Page {
     private route: ActivatedRoute
  
     ) {
+      this.page = this.route.queryParams.subscribe(params => {
+        if (params && params.special) {
+          this.page = JSON.parse(params.special);
+        }
+      }); 
    
   }
 
   async ngOnInit() {
     this.pragas =  this.showData();
     this.pragasSearch= [];
+    console.log(this.page);
     
   }
 

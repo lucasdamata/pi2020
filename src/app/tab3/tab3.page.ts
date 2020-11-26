@@ -123,7 +123,6 @@ export class Tab3Page {
       },
     ]
 
-
     this.fgroup = this.fbuilder.group({
       'funcionario': [this.funcionario, Validators.compose([
         Validators.required
@@ -145,13 +144,16 @@ export class Tab3Page {
         Validators.required
       ])],
       'latitude': [this.latitude, Validators.compose([
-        Validators.required
+        Validators.required,
+        
       ])],
       'longitude': [this.longitude, Validators.compose([
         Validators.required
       ])],
 
     });
+    this.fgroup.controls['latitude'].disable();
+    this.fgroup.controls['longitude'].disable();
   }
   
 
