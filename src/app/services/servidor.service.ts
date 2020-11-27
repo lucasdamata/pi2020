@@ -13,7 +13,7 @@ export class ServidorService {
 
   
   url : String = "http://localhost/dados/";
-  api : String = "https://8e88668dc622.ngrok.io"
+  api : String = "https://4fddf6fb23ba.ngrok.io"
 
   constructor(public http : HttpClient) { }
 
@@ -22,7 +22,7 @@ export class ServidorService {
   }
 
   getDataPtyhon(){
-    return this.http.get(this.api+"registros").pipe(map(res => res.valueOf()));
+    return this.http.get(this.api+"/registros").pipe(map(res => res.valueOf()));
   }
 
   getDataTeste(): Observable<any>{
