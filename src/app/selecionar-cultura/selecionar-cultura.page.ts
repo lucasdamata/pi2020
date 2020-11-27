@@ -7,10 +7,8 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 })
 export class SelecionarCulturaPage implements OnInit {
 
-
-cana:string= 'pragas'; 
-alho:string= 'pragasAlho';  
- 
+  cana:string = 'pragas';
+  alho:string = "pragasAlho"
 
   constructor(public route: ActivatedRoute,
               public router: Router,
@@ -39,14 +37,5 @@ alho:string= 'pragasAlho';
   }
 
 
-
-  detalhe(praga:any) {
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        special: JSON.stringify(praga)
-      }
-    };
-    this.router.navigate(['detalhes'], navigationExtras);
-  }
 
 }

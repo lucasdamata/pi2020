@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClientModule } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 
 import {map} from 'rxjs/operators';
@@ -34,4 +33,5 @@ export class ServidorService {
 
     return this.http.get(this.api+"/"+endpoint).pipe(map(res => res.valueOf()));
   }
+  
 }

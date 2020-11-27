@@ -1,11 +1,9 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button ></ion-back-button>
+      <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-menu-button auto-hide="false" slot="end"></ion-menu-button>
 
-    
     <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -20,12 +18,11 @@
 
 
 
-
   <ion-card *ngFor="let reg of registrosSalvos" class="block">
 
     <ion-item class="block">
       <ion-avatar slot="start">
-        <img src="../../assets/images/avatar.jpg">
+        <img alt="img" src="../../assets/images/avatar.jpg">
       </ion-avatar>
       <ion-label>
         <h3 class="block">{{reg.nome}}</h3>
@@ -36,7 +33,7 @@
 
     <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav class="block">
       <ion-slide *ngFor="let s of sliderOne.slidesItems" class="block">
-        <img src="../../assets/images/{{reg.pragaid}}/{{s.id}}.jpg" class="block">
+        <img alt="img" src="../../assets/images/{{reg.pragaid}}/{{s.id}}.jpg" class="block">
         <span class="slide-text">imagem {{s.id}}</span>
       </ion-slide>
     </ion-slides>
@@ -48,28 +45,29 @@
       estamos em constante estudo para trazer a melhor informação sobre esta praga
     </ion-card-content>
 
-    
+
     <ion-input [hidden]='true' [(ngModel)]="latitude">{{reg.latitude}}</ion-input>
     <ion-input [hidden]='true' [(ngModel)]="longitude">{{reg.longitude}}</ion-input>
-    
 
     <ion-footer>
-      
+
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-button (click)="regDetail(reg.nome, reg.pragaid, reg.id, reg.fazenda,reg.talhao, reg.setor, reg.observacao,reg.variedade)" color='success' expand="block">
+            <ion-button
+              (click)="regDetail(reg.nome, reg.pragaid, reg.id, reg.fazenda,reg.talhao, reg.setor, reg.observacao,reg.variedade)"
+              color='success' expand="block">
               Detalhes
             </ion-button>
           </ion-col>
           <ion-col>
-            <ion-button color='success' expand="block" (click)="positionDetail(reg.latitude, reg.longitude)" >
+            <ion-button color='success' expand="block" (click)="positionDetail(reg.latitude, reg.longitude)">
               Local
             </ion-button>
           </ion-col>
         </ion-row>
- 
-    </ion-grid>
+
+      </ion-grid>
     </ion-footer>
   </ion-card>
 
