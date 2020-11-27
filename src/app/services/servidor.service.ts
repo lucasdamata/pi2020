@@ -13,7 +13,7 @@ export class ServidorService {
 
   
   url : String = "http://localhost/dados/";
-  api : String = "http://127.0.0.1:5000/"
+  api : String = "https://8e88668dc622.ngrok.io"
 
   constructor(public http : HttpClient) { }
 

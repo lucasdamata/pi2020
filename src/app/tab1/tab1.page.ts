@@ -44,7 +44,6 @@ export class Tab1Page {
     this.pragas = this.showDataReg(this.page);
     this.pragasSearch= [];
 
-
     console.log(this.page);
 
    
