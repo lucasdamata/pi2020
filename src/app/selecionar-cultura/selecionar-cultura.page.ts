@@ -1,16 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-selecionar-cultura',
   templateUrl: './selecionar-cultura.page.html',
   styleUrls: ['./selecionar-cultura.page.scss'],
 })
 export class SelecionarCulturaPage implements OnInit {
-
-
-cana:string= 'pragas'; 
-alho:string= 'pragasAlho';  
- 
 
   constructor(public route: ActivatedRoute,
               public router: Router,
@@ -20,33 +15,38 @@ alho:string= 'pragasAlho';
   }
 
 
-  canaPage(){
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        special: JSON.stringify(this.cana)
-      }
-    };
-    this.router.navigate(['tabs/tab1'], navigationExtras);
+  cana(){
+    this.router.navigate(['tabs/tab1']);
   }
 
-  alhoPage(){
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        special: JSON.stringify(this.alho)
-      }
-    };
-    this.router.navigate(['tabs/tab1'], navigationExtras);
+  café(){
+    this.router.navigate(['tabs/tab1']);
   }
 
 
-
-  detalhe(praga:any) {
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        special: JSON.stringify(praga)
-      }
-    };
-    this.router.navigate(['detalhes'], navigationExtras);
+  alho(){
+    this.router.navigate(['tabs/tab1']);
   }
+
+
+  abacate(){
+    this.router.navigate(['tabs/tab1']);
+  }
+
+
+  beterraba(){
+    this.router.navigate(['tabs/tab1']);
+  }
+
+  cenoura(){
+    this.router.navigate(['tabs/tab1']);
+  }
+
+
+  repolho(){
+    this.router.navigate(['tabs/tab1']);
+  }
+
+
 
 }

@@ -1,88 +1,58 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
 
     </ion-buttons>
-    <ion-title>selecionar cultura</ion-title>
+    <ion-title>Selecione uma cultura</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="container">
-    <div class="background">
-      <div class="Circle1"></div>
-      <div class="Circle2"></div>
-      <div class="Circle3"></div>
-      <div class="content">
-        <h1 class="Condition">Carmo do Paranaíba</h1>
-        <h1 class="Temp">23<span id="F">&#8451;</span></h1>
-        <h1 class="Time">20:36</h1>
-        <h1 class="Location"><i class="material-icons locationIcon">Local </i>MG</h1>
+<div class="widget">
+            
+  <div class="left-panel panel">
+      <div class="date">
+          Sexta-feira, 25 Nov 2020
       </div>
-    </div>
+      <div class="city">
+          Carmo do Paranaíba
+      </div>
+      <div class="temp">
+         <img src="https://s5.postimg.cc/yzcm7htyb/image.png" alt="" width="60">
+         27&deg;
+      </div>
+  </div>
+  <div class="right-panel panel">
+      <img src="https://s5.postimg.cc/lifnombwz/mumbai1.png" alt="" width="160">
   </div>
 
-  <br>
+</div>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col style="text-align: center;">
-        <ion-button (click)="canaPage()">
-          Cana
-        </ion-button>
-      </ion-col>
-      <ion-col style="text-align: center;">
-        <ion-button (click)="alhoPage()">
-          Alho
-        </ion-button>
-      </ion-col>
-    </ion-row>
 
-    <br>
-
-    <ion-row>
-      <ion-col style="text-align: center;">
-        <ion-button>
-          alho
-        </ion-button>
-      </ion-col>
-      <ion-col style="text-align: center;">
-        <ion-button>
-          abacate
-        </ion-button>
-      </ion-col>
-    </ion-row>
-<br>
-    <ion-row>
-      <ion-col style="text-align: center;">
-        <ion-button>
-          beterraba
-        </ion-button>
-      </ion-col>
-      <ion-col style="text-align: center;">
-        <ion-button>
-          cenoura
-        </ion-button>
-      </ion-col>
-    </ion-row>
-<br>
-    <ion-row>
-      <ion-col style="text-align: center;">
-        <ion-button>
-          repolho
-        </ion-button>
-      </ion-col>
-      <ion-col style="text-align: center;">
-        <ion-button>
-          café
-        </ion-button>
-      </ion-col>
-    </ion-row>
-
+<ion-content>  
+  <ion-grid class="card-background-page">
+      <ion-row>
+        <ion-col>
+          <ion-card (click)="cana()">
+            <img src="../../assets/images/carretaFuracao/cana-de-acucar-na-mesa-de-madeira.jpg"/>
+            <ion-card-content>
+              <ion-card-title>
+                <div class="card-title">Cana de Açúcar</div>
+                </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <img src="../../assets/images/carretaFuracao/alho-branco-na-mesa.jpg"/>
+            <ion-card-content>
+              <ion-card-title>
+                <div class="card-title">Alho</div>
+                </ion-card-title>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
   </ion-grid>
-
-
-
-
-
 </ion-content>
+
