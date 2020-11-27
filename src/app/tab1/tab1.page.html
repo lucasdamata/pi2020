@@ -1,10 +1,9 @@
 <ion-header color="light">
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-back-button ></ion-back-button>
+      <ion-menu-button auto-hide="false" slot="end"></ion-menu-button>
     </ion-buttons>
 
-    <ion-menu-button auto-hide="false" slot="end"></ion-menu-button>
 
     <ion-title>Identificar Praga</ion-title>
   </ion-toolbar>
@@ -15,10 +14,8 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-button color="success" routerLink="/selecionar-cultura" expand="block" fill="outline">cultura</ion-button>
-
   <ion-card *ngFor="let praga of pragasSearch">
-    <img src="{{praga.img}}" (click)="detalhe(praga)" />
+    <img alt="praga" src="{{praga.img}}" (click)="detalhe(praga)" />
     <ion-card-header>
       <ion-card-title (click)="detalhe(praga)"><u>{{praga.nome}}</u></ion-card-title>
     </ion-card-header>

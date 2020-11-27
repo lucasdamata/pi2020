@@ -29,4 +29,9 @@ export class ServidorService {
 
     return this.http.get(this.url+"banco.php").pipe(map(res => res.valueOf()));
   }
+
+  getDataApi(endpoint){
+
+    return this.http.get(this.api+"/"+endpoint).pipe(map(res => res.valueOf()));
+  }
 }

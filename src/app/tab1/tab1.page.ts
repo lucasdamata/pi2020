@@ -34,37 +34,47 @@ export class Tab1Page {
           this.page = JSON.parse(params.special);
         }
       }); 
+
+    
    
   }
 
   async ngOnInit() {
-    this.pragas =  this.showData();
+
+    this.pragas = this.showDataReg(this.page);
     this.pragasSearch= [];
+
+
     console.log(this.page);
-    console.log("oi");
-    
+
+   
   }
 
-  //buscar dados do banco
-   showData(){
-    this.servidor.getData()
-    .subscribe(
-      data => {
+
+//fazendo um teste
+
+showDataReg(endpoint){
+  this.servidor.getDataApi(endpoint)
+  .subscribe(
+    data => { 
+      this.pragas = data;
+      let tamanho = Object.keys(data).length;
+      for(let i=0; i < tamanho; i++ ){
         
-        this.pragas = data;
-        let tamanho = Object.keys(data).length;
-        for(let i=0; i < tamanho; i++ ){
-          this.pragasSearch.push({
-            id: data[i]["id"],
-            nome: data[i]["nome"],
-            img: data[i]["img"],
-            combate: data[i]["combate"],
+        this.pragasSearch.push({
+          id: data[i][0],
+          nome: data[i][1],
+          img: data[i][2],
+          combate: data[i][3]
           });
-        
-          this.pragasAll = this.pragasSearch;
-        } }, err => console.log(err)
-    );
-   }
+          
+      
+        this.pragas = this.pragasSearch;
+      }
+     }, err => console.log(err)
+  );
+ }
+
 //pagina de detalhes
 detalhe(praga:any) {
   let navigationExtras: NavigationExtras = {

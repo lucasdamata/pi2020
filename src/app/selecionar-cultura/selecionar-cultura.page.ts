@@ -8,7 +8,9 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 export class SelecionarCulturaPage implements OnInit {
 
 
-cana:string= 'cana';  
+cana:string= 'pragas'; 
+alho:string= 'pragasAlho';  
+ 
 
   constructor(public route: ActivatedRoute,
               public router: Router,
@@ -27,33 +29,16 @@ cana:string= 'cana';
     this.router.navigate(['tabs/tab1'], navigationExtras);
   }
 
-  café(){
-    this.router.navigate(['tabs/tab1']);
+  alhoPage(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.alho)
+      }
+    };
+    this.router.navigate(['tabs/tab1'], navigationExtras);
   }
 
 
-  alho(){
-    this.router.navigate(['tabs/tab1']);
-  }
-
-
-  abacate(){
-    this.router.navigate(['tabs/tab1']);
-  }
-
-
-  beterraba(){
-    this.router.navigate(['tabs/tab1']);
-  }
-
-  cenoura(){
-    this.router.navigate(['tabs/tab1']);
-  }
-
-
-  repolho(){
-    this.router.navigate(['tabs/tab1']);
-  }
 
   detalhe(praga:any) {
     let navigationExtras: NavigationExtras = {
