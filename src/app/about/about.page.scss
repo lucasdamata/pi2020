@@ -1,16 +1,14 @@
-.card-background-page {
-  ion-card {
-    position: relative;
-    text-align: center;
-    background-color: white;
-  }
+.titles {
+  text-align: center;
+  font-weight: bold;
+  color: black;
+}
 
-  .card-title {
-    position: relative;
-    font-size: 0.8em;
-    width: 100%;
-    font-weight: bold;
-    color: black;
-    text-shadow: black 0.1em 0.1em 0.2em;
-  }
+p {
+  text-align: justify;
+}
+
+ion-card-header {
+  padding-top: 0%;
+  margin-top: 0%;
 }

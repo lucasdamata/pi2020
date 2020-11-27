@@ -21,7 +21,8 @@ const routes: Routes = [
   {
     path: 'charts',
     loadChildren: () => import('./charts/charts.module').then( m => m.ChartsPageModule)
-  },  {
+  },
+  {
     path: 'mapsdetail',
     loadChildren: () => import('./mapsdetail/mapsdetail.module').then( m => m.MapsdetailPageModule)
   },
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: 'selecionar-cultura',
     loadChildren: () => import('./selecionar-cultura/selecionar-cultura.module').then( m => m.SelecionarCulturaPageModule)
+  },
+
+  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
   },
 
  
