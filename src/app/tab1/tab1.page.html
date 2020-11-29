@@ -1,11 +1,10 @@
 <ion-header color="light">
   <ion-toolbar color="success">
-    <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false" slot="end"></ion-menu-button>
+    <ion-buttons slot="start" side="end">
+      <ion-menu-button auto-hide="false" ></ion-menu-button>
     </ion-buttons>
 
-
-    <ion-title>Identificar Praga</ion-title>
+    <ion-title>Pragas Cadastradas</ion-title>  
   </ion-toolbar>
 
   <ion-searchbar placeholder="Pesquisar praga" showCancelButton="always" animated (ionChange)="onSearchTerm($event)"> </ion-searchbar>
@@ -17,9 +16,9 @@
   <ion-card *ngFor="let praga of pragasSearch">
     <img alt="praga" src="{{praga.img}}" (click)="detalhe(praga)" />
     <ion-card-header>
-      <ion-card-title (click)="detalhe(praga)"><u>{{praga.nome}}</u></ion-card-title>
+      <ion-card-title class="titulo" (click)="detalhe(praga)">{{praga.nome}}</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content class="conteudo">
       {{praga.combate}}
     </ion-card-content>
 
@@ -28,7 +27,7 @@
 
 
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/tabs/tab3" color="success">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

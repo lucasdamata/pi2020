@@ -5,37 +5,39 @@
       <ion-back-button></ion-back-button>
 
     </ion-buttons>
-    <ion-title>Selecione uma cultura</ion-title>
+    <ion-title>Selecione um cultivo</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<div class="widget">
-            
-  <div class="left-panel panel">
-      <div class="date">
-          Sexta-feira, 25 Nov 2020
-      </div>
-      <div class="city">
-          Carmo do Paranaíba
-      </div>
-      <div class="temp">
-         <img src="https://s5.postimg.cc/yzcm7htyb/image.png" alt="" width="60">
-         27&deg;
-      </div>
-  </div>
-  <div class="right-panel panel">
-      <img src="https://s5.postimg.cc/lifnombwz/mumbai1.png" alt="" width="160">
-  </div>
-
-</div>
 
 
 <ion-content>  
+  <div class="widget">
+              
+    <div class="left-panel panel">
+        <div class="date">
+            Sexta-feira, 27 Nov 2020
+        </div>
+        <div class="city">
+            Carmo do Paranaíba
+        </div>
+        <div class="temp">
+           <img src="https://s5.postimg.cc/yzcm7htyb/image.png" alt="" width="60">
+           25&deg;
+        </div>
+    </div>
+    <div class="right-panel panel">
+        <img src="https://s5.postimg.cc/lifnombwz/mumbai1.png" alt="" width="160">
+    </div>
+  
+  </div>
+
+  <label class="tituto-style"> <strong>Culturas</strong></label>
   <ion-grid class="card-background-page">
       <ion-row>
         <ion-col>
-          <ion-card (click)="canaPage()">
-            <img src="../../assets/images/carretaFuracao/cana-de-acucar-na-mesa-de-madeira.jpg"/>
+          <ion-card class="card-style" (click)="canaPage()">
+            <img alt="cana" src="../../assets/images/carretaFuracao/cana-de-acucar-na-mesa-de-madeira.jpg"/>
             <ion-card-content>
               <ion-card-title>
                 <div class="card-title">Cana de Açúcar</div>
@@ -44,8 +46,8 @@
           </ion-card>
         </ion-col>
         <ion-col>
-          <ion-card (click)="alhoPage()">
-            <img src="../../assets/images/carretaFuracao/alho-branco-na-mesa.jpg"/>
+          <ion-card class="card-style" (click)="alhoPage()">
+            <img alt="alho" src="../../assets/images/carretaFuracao/alho-branco-na-mesa.jpg"/>
             <ion-card-content>
               <ion-card-title>
                 <div class="card-title">Alho</div>
@@ -55,5 +57,13 @@
         </ion-col>
       </ion-row>
   </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/tabs/tab3" color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
 </ion-content>
 
