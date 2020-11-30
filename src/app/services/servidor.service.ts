@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ServidorService {
 
 
-  apiLocal : String = "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=-19.4569334&longitude=-46.2760992&localityLanguage=pt";
+ 
   url : String = "http://localhost/dados/";
   api : String = "http://127.0.0.1:5000/"
 

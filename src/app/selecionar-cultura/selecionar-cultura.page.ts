@@ -24,7 +24,7 @@ export class SelecionarCulturaPage implements OnInit {
               public router: Router,
               public servidor: ServidorService,
               private geolocation: Geolocation
-              ) {
+              ) { 
 
 
     this.cidade = this.geolocation.getCurrentPosition().then(resp=>{
@@ -39,11 +39,12 @@ export class SelecionarCulturaPage implements OnInit {
               
      })
    
+
   }
 
   ngOnInit() {
 
- 
+  
   }
 
 
