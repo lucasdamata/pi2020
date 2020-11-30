@@ -163,13 +163,21 @@ detalhe(praga:any) {
 
 alerta(praga) {
 
-  console.log(praga);
   let navigationExtras: NavigationExtras = {
     queryParams: {
       special: JSON.stringify(praga)
     }
   };
   this.router.navigate(['alerta'], navigationExtras);
+}
+identificar(page){
+  let navigationExtras: NavigationExtras = {
+    queryParams: {
+      special: JSON.stringify(page)
+    }
+  };
+  this.router.navigate(['tabs/tab3'], navigationExtras);
+
 }
 
 

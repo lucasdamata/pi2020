@@ -10,61 +10,70 @@
 
 <ion-content>
 
+  <ion-item>
+    <ion-label position="floating">praga:</ion-label>
+    <ion-input type="text" >{{praga}}</ion-input>
+  </ion-item>
+
+
+  <form [formGroup]="fgroup">
+
+  
     <ion-item>
       <ion-label position="floating">Funcionário:</ion-label>
-      <ion-input type="text"  ></ion-input>
+      <ion-input type="text"  formControlName="funcionario"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating" >Fazenda:</ion-label>
-      <ion-input type="text"  placeholder="código da fazenda" ></ion-input>
+      <ion-input type="text"  placeholder="código da fazenda" formControlName="fazenda"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Setor:</ion-label>
-      <ion-input type="text"  ></ion-input>
+      <ion-input type="text"  formControlName="setor"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Talhão:</ion-label>
-      <ion-input type="text" ></ion-input>
+      <ion-input type="text"  formControlName="talhao"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Variedade:</ion-label>
-      <ion-input type="text"  ></ion-input>
+      <ion-input type="text"  formControlName="variedade"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Observação:</ion-label>
-      <ion-input type="text" ></ion-input>
+      <ion-input type="text"  formControlName="observacao"></ion-input>
     </ion-item>
+
 
     <ion-item>
-      <ion-label position="floating">Praga:</ion-label>
-      <ion-input type="text" ></ion-input>
+      <ion-input type="text" [(ngModel)]="latitude" formControlName="latitude" >Lat: {{lat}}</ion-input>
+      <ion-input type="text" [(ngModel)]="longitude" formControlName="longitude">Lng: {{lng}}</ion-input>
     </ion-item>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-button color="success" expand="block" (click)="takePicture()">
-            <ion-icon name="camera-outline"></ion-icon>Câmera
-          </ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button color="success" expand="block" routerLink="/map">
-            <ion-icon name="location-sharp"></ion-icon>selecionar local
-          </ion-button>
-        </ion-col>
-  
-      </ion-row>
-    </ion-grid>
+  </form>
 
-    <ion-button color="success" expand="block" (click)="sendPostRequest()">
-      <ion-icon slot="end" name="create"></ion-icon>
-      ENVIAR
-    </ion-button>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button color="success" expand="block" routerLink="/map">
+          <ion-icon name="location-sharp"></ion-icon>selecionar local
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-button color="success" expand="block" (click)="sendPostRequest()" [disabled]="! fgroup.valid">
+    <ion-icon slot="end" name="create"></ion-icon>
+    ENVIAR
+  </ion-button>
+
 
 </ion-content>
 

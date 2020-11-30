@@ -23,7 +23,7 @@ export class Tab3Page {
 
   public pragas: Array<object> = [];
   page:string = "tab3";
-
+  pagina:any;
   funcionario: String = '';
   observacao: String = '';
   fazenda:String = '';
@@ -68,6 +68,13 @@ export class Tab3Page {
          
         }
 
+      }); 
+
+      this.pagina = this.route.queryParams.subscribe(params => {
+        if (params && params.special) {
+          this.pagina = JSON.parse(params.special);
+          console.log(this.pagina);
+        }
       }); 
 
     // array estático, será substituido por consultas em banco
@@ -179,9 +186,10 @@ export class Tab3Page {
                                  
 
     let postData = {
+  
       "funcionario": this.fgroup.value.funcionario,
       "observacao": this.fgroup.value.observacao,
-      "img": "teste",
+      "img": this.capturedSnapURL,
       "fazenda": this.fgroup.value.fazenda,
       "setor": this.fgroup.value.setor,
       "talhao": this.fgroup.value.talhao,
@@ -192,7 +200,7 @@ export class Tab3Page {
   
   
     this.http.post("http://127.0.0.1:5000/registros", postData, { headers: headers }).subscribe(res=> {
-      
+      console.log(this.pagina);
     this.presentLoading('Aguarde, enviando e processando dados...');
     this.fgroup.reset();
     this.router.navigate(['tabs/Feed']);
