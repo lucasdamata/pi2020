@@ -1,21 +1,21 @@
 <ion-header>
   <ion-toolbar color="success">
     <ion-buttons slot="start">
-      <ion-menu-button auto-hide="false"></ion-menu-button>
+      <ion-menu-button auto-hide="false" side="end"></ion-menu-button>
     </ion-buttons>
+
     <ion-title>Início</ion-title>
+
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="content" >
+<ion-content class="content">
 
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Solte para recarregar"
       refreshingSpinner="circles" refreshingText="Carregando...">
     </ion-refresher-content>
   </ion-refresher>
-
-
 
   <ion-card *ngFor="let reg of registrosSalvos" class="block">
 
@@ -68,7 +68,7 @@
     </ion-footer>
   </ion-card>
 
-<!--
+  <!--
   <ion-list *ngFor="let reg of registrosSalvos">
     <ion-item>
       <ion-avatar slot="start">

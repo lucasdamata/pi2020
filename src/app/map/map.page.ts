@@ -91,17 +91,14 @@ export class MapPage implements OnInit {
       // show the infoWindow
       marker.showInfoWindow();
 
-
     });
   }
-
   async showToast(message: string) {
     let toast = await this.toastCtrl.create({
       message: message,
       duration: 2000,
       position: 'middle'
     });
-
     toast.present();
   }
 

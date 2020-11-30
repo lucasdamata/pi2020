@@ -10,61 +10,61 @@
 
 <ion-content>
 
+    <ion-item>
+      <ion-label position="floating">Funcionário:</ion-label>
+      <ion-input type="text"  ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" >Fazenda:</ion-label>
+      <ion-input type="text"  placeholder="código da fazenda" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Setor:</ion-label>
+      <ion-input type="text"  ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Talhão:</ion-label>
+      <ion-input type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Variedade:</ion-label>
+      <ion-input type="text"  ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Observação:</ion-label>
+      <ion-input type="text" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Praga:</ion-label>
+      <ion-input type="text" ></ion-input>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button color="success" expand="block" (click)="takePicture()">
+            <ion-icon name="camera-outline"></ion-icon>Câmera
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button color="success" expand="block" routerLink="/map">
+            <ion-icon name="location-sharp"></ion-icon>selecionar local
+          </ion-button>
+        </ion-col>
   
-  <form [formGroup]="alertForm" (ngSubmit) = "send()">
-    <ion-list>
+      </ion-row>
+    </ion-grid>
 
-      <ion-item>
-        <ion-label position="floating">Funcionário: </ion-label>
-        <ion-input formControlName="funcionario" [(ngModel)]="funcionario" text-right id="input"></ion-input>
-      </ion-item>
-
-
-      <ion-item>
-        <ion-label>Talhão</ion-label>
-        <ion-select value="brown" okText="selecionar" cancelText="cancelar">
-          <ion-select-option >1</ion-select-option>
-          <ion-select-option >2</ion-select-option>
-          <ion-select-option >3</ion-select-option>
-          <ion-select-option >4</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Observações: </ion-label>
-        <ion-textarea formControlName="observacao" [(ngModel)]="observacao" text-right id="input"></ion-textarea>
-      </ion-item>
-
-      <div class="prioridade">
-        <label >Prioridade:</label>
-        <ion-segment>
-          <ion-segment-button value="baixa">
-            <ion-label color="primary">baixa</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="média">
-            <ion-label>média</ion-label>
-          </ion-segment-button>
-          <ion-segment-button  color="danger" value="alta">
-            <ion-label color="danger">alta</ion-label>
-          </ion-segment-button>
-        </ion-segment>
-      </div>
-
-      <ion-button color="success" expand="block" routerLink="/map">
-        <ion-icon name="location-sharp"></ion-icon>
-        selecionar local
-      </ion-button>
-      
-
-      <ion-button color="success" [disabled]="!alertForm.valid" type="submit" expand="block"  (click)="sendPostRequest()">
-        Enviar
-        <ion-icon slot="end" name="create"></ion-icon>
-      </ion-button>
-
-    </ion-list>
-    
-  </form>   
-
+    <ion-button color="success" expand="block" (click)="sendPostRequest()">
+      <ion-icon slot="end" name="create"></ion-icon>
+      ENVIAR
+    </ion-button>
 
 </ion-content>
 

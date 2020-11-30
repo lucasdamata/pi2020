@@ -16,10 +16,10 @@
               
     <div class="left-panel panel">
         <div class="date">
-            Sexta-feira, 27 Nov 2020
+          {{ data | date: 'dd/MM/yyyy HH:mm' }}
         </div>
         <div class="city">
-            Carmo do Paranaíba
+           {{cidade}}
         </div>
         <div class="temp">
            <img src="https://s5.postimg.cc/yzcm7htyb/image.png" alt="" width="60">
@@ -32,7 +32,16 @@
   
   </div>
 
-  <label class="tituto-style"> <strong>Culturas</strong></label>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <label class="tituto-style" style="text-align: center;"> <strong>Culturas</strong></label>
+        <ion-searchbar placeholder="Pesquisar cultura" showCancelButton="always" animated (ionChange)="onSearchTerm($event)"> </ion-searchbar>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
   <ion-grid class="card-background-page">
       <ion-row>
         <ion-col>
@@ -58,11 +67,73 @@
       </ion-row>
   </ion-grid>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/tabs/tab3" color="success">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-grid class="card-background-page">
+    <ion-row>
+      <ion-col>
+        <ion-card class="card-style" (click)="canaPage()">
+          <img alt="cana" src="../../assets/images/carretaFuracao/cafe.jpg"/>
+          <ion-card-content>
+            <ion-card-title>
+              <div class="card-title">Café (em breve)</div>
+              </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="card-style" (click)="alhoPage()">
+          <img alt="alho" src="../../assets/images/carretaFuracao/blueberry.jpg"/>
+          <ion-card-content>
+            <ion-card-title>
+              <div class="card-title">Blueberry (em breve)</div>
+              </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
+<ion-grid class="card-background-page">
+  <ion-row>
+    <ion-col>
+      <ion-card class="card-style" (click)="canaPage()">
+        <img alt="cana" src="../../assets/images/carretaFuracao/beterraba.jpg"/>
+        <ion-card-content>
+          <ion-card-title>
+            <div class="card-title">Beterraba (em breve)</div>
+            </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card class="card-style" (click)="alhoPage()">
+        <img alt="alho" src="../../assets/images/carretaFuracao/cenoura.jpg"/>
+        <ion-card-content>
+          <ion-card-title>
+            <div class="card-title">Cenoura (em breve)</div>
+            </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid class="card-background-page">
+  <ion-row>
+    <ion-col>
+      <ion-card class="card-style" (click)="canaPage()">
+        <img alt="cana" src="../../assets/images/carretaFuracao/abacate.jpg"/>
+        <ion-card-content>
+          <ion-card-title>
+            <div class="card-title">Abacate (em breve)</div>
+            </ion-card-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
 
 </ion-content>

@@ -11,9 +11,10 @@
 
 </ion-header>
 
+
 <ion-content [fullscreen]="true">
 
-  <ion-card *ngFor="let praga of pragasSearch">
+  <ion-card *ngFor="let praga of teste">
     <img alt="praga" src="{{praga.img}}" (click)="detalhe(praga)" />
     <ion-card-header>
       <ion-card-title class="titulo" (click)="detalhe(praga)">{{praga.nome}}</ion-card-title>
@@ -22,7 +23,7 @@
       {{praga.combate}}
     </ion-card-content>
 
-    <ion-button color="success" routerLink="/alerta" expand="block" fill="outline">Gerar alerta</ion-button>
+    <ion-button color="success" expand="block" fill="outline" (click)="alerta(praga.nome)">Gerar alerta</ion-button>
   </ion-card>
 
 

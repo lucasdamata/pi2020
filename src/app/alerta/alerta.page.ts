@@ -19,6 +19,8 @@ import { LoadingController } from '@ionic/angular';
 })
 export class AlertaPage implements OnInit {
 
+  praga:any;
+
 
   funcionario: String ='';
   observacao: String = '';
@@ -36,13 +38,18 @@ export class AlertaPage implements OnInit {
     local: [''],
     observacao: ['']
   });
+  route: any;
+  
 
   constructor(public photoService: PhotoService,
               private formBuilder: FormBuilder, 
               private emailComposer: EmailComposer,
               private http: HttpClient,
               public loadingController: LoadingController,
-              public camera: Camera) { }
+              public camera: Camera) 
+              {
+
+}
   
  
   ngOnInit() {
