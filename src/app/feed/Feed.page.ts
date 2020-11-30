@@ -83,7 +83,7 @@ export class FeedPage {
     
     this.registros = this.showDataReg();
     this.registrosSalvos= [];
-    this.showDataPragas();
+   // this.showDataPragas();
 
   }
 
@@ -132,7 +132,7 @@ export class FeedPage {
    }
 
 
-showDataPragas(){
+/* showDataPragas(){
     this.servidor.getData()
     .subscribe(
       data => {
@@ -150,7 +150,7 @@ showDataPragas(){
           this.pragasAll = this.pragasSearch;
         } }, err => console.log(err)
     );
-   }
+   } */
    positionDetail(lat,lng){
     let loc:any = {lat:lat, lng:lng};
     let navigationExtras: NavigationExtras = {

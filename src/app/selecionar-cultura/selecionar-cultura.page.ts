@@ -23,25 +23,21 @@ export class SelecionarCulturaPage implements OnInit {
               public router: Router,
               public servidor: ServidorService,
               private geolocation: Geolocation
-              ) {
+              ) { 
 
 
-     this.geolocation.getCurrentPosition().then(resp=>{
-       this.lat = resp.coords.latitude;
-        this.lng = resp.coords.longitude;
-
-       this.cidade = this.servidor.getLocationApi(this.lat, this.lng).subscribe(resp=>{
-        this.cidade = resp.city;
-        
-        })
-              
-     })
+    this.geolocation.getCurrentPosition().then(resp=>{
+      this.lat = resp.coords.latitude;
+      this.lng = resp.coords.longitude;
+      
+    }) 
    
+
   }
 
   ngOnInit() {
 
- 
+  
   }
 
 
