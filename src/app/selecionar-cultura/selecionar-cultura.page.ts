@@ -15,6 +15,7 @@ export class SelecionarCulturaPage implements OnInit {
   lat:any;
   lng:any;
   cidade:any;
+ 
 
   cana:string = 'pragas';
   alho:string = "pragasAlho"
@@ -26,12 +27,13 @@ export class SelecionarCulturaPage implements OnInit {
               ) {
 
 
-     this.geolocation.getCurrentPosition().then(resp=>{
+    this.cidade = this.geolocation.getCurrentPosition().then(resp=>{
        this.lat = resp.coords.latitude;
         this.lng = resp.coords.longitude;
 
        this.cidade = this.servidor.getLocationApi(this.lat, this.lng).subscribe(resp=>{
-        this.cidade = resp.city;
+        
+        this.cidade = resp;
         
         })
               

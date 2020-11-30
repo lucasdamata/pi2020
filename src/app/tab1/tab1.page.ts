@@ -43,7 +43,7 @@ export class Tab1Page implements OnInit {
 
         {
           "nome": "Diatraea saccharalis - Broca da Cana",
-          "img": "https://www.agrolink.com.br/upload/problemas/Diatraea_saccharalis86.jpg",
+          "img": "../assets/pragas/pragasCana/broca.jpg",
           "nivel": " GRAVE",
           "combate": " liberação de parasitóides como a Cotesia flavipes. Não adotar medidas que causem desequilíbrio nas populações de parasitóides e predadores, sendo necessário racionalizar o uso de produtos químicos.",
           "pInfestação": "Março - outubro",
@@ -51,7 +51,7 @@ export class Tab1Page implements OnInit {
         },
         {
           "nome": "Mahanarva fimbriolata - Cigarrinha das Raízes",
-          "img": "https://amtecagr.files.wordpress.com/2016/01/cigarrinha-das-raizes-cana-mahanarva-fimbriolata.jpg?w=1000",
+          "img": "../assets/pragas/pragasCana/cigarrinha.jpg",
           "nivel": "Médio",
           "combate": "aplicação do fungo Metarhizium anisopliae quando forem encontradas populações acima de 3 ninfas por metro linear.",
           "pInfestação": "junho-julho",
@@ -59,7 +59,7 @@ export class Tab1Page implements OnInit {
         },
         {
           "nome": "Migdolus fryanus - Migdolus",
-          "img": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Migdolus_fryanus.jpg",
+          "img": "../assets/pragas/pragasCana/migdolus.jpg",
           "nivel": "GRAVE",
           "combate": "aplicação de inseticidas por ocasião do preparo do solo, em operação conjunta com a subsolagem (subsolador-aplicador) ou aração (arado de aiveca, com aplicador de inseticida), na época seca, quando se observa maior ocorrência de larvas nas camadas superficiais do solo.",
           "pInfestação": "Março - outubro",
@@ -67,7 +67,7 @@ export class Tab1Page implements OnInit {
         },
         {
           "nome": "Sphenophorus levis",
-          "img": "https://gebio.com.br/site/wp-content/uploads/2019/08/gebio-2.jpg",
+          "img": "../assets/pragas/pragasCana/spheno.jpg",
           "nivel": "GRAVE",
           "combate": "consiste na destruição antecipada das soqueiras com o erradicador de soqueiras. A seguir a área deverá ser mantida livre de plantas hospedeiras da praga e o próximo plantio deverá ser realizado o mais tarde possível.",
           "pInfestação": "junho-julho",
@@ -75,7 +75,7 @@ export class Tab1Page implements OnInit {
         },
         {
           "nome": "Broca Gigante",
-          "img": "https://3.bp.blogspot.com/-AE6QozXekEQ/Ul_hPq13FJI/AAAAAAAAADM/mTSK1L-RSyU/s1600/Larva-da-Broca.jpg",
+          "img": "../assets/pragas/pragasCana/brocaG.jpg",
           "nivel": "Médio",
           "combate": "A termonebulização é uma técnica que consiste na transformação de um inseticida diluído em óleo em uma névoa e a sua aplicação no interior do formigueiro, utilizando equipamentos denominados termonebulizadores.",
           "pInfestação": "junho-julho",
@@ -83,7 +83,7 @@ export class Tab1Page implements OnInit {
         },
         {
           "nome": "Lagarta Elasmo",
-          "img": "https://i.ytimg.com/vi/lWZ5coUvYkk/maxresdefault.jpg",
+          "img": "../assets/pragas/pragasCana/lagarta.jpg",
           "nivel": "Baixo",
           "combate": "uso de sementes com tratamento industrial, especialmente com a nova tecnologia Fortenza Duo, da Syngenta, é uma grande defesa contra essa praga. E traz um excelente resultado para o produtor.",
           "pInfestação": "Março - outubro",
@@ -94,7 +94,7 @@ export class Tab1Page implements OnInit {
       this.pragasAlho = [
         {
           "nome": "Ácaro Eriophyestulipae",
-          "img": "https://www.agrolink.com.br/upload/problemas/Eriophyes_tulipae101.jpg",
+          "img": "../assets/pragas/pragasAlho/acaro.jpg",
           "nivel": " GRAVE",
           "combate": "Aplicação de acaricida em pulverizações ou em imersão nos bulbos antes do plantio.",
           "pInfestação": "Março - outubro",
@@ -102,7 +102,7 @@ export class Tab1Page implements OnInit {
         },
         {
           "nome": "Thrips Tabaci ",
-          "img": "https://i.ytimg.com/vi/Snd4L0hAwQA/maxresdefault.jpg",
+          "img": "../assets/pragas/pragasAlho/trips.jpg",
           "nivel": " GRAVE",
           "combate": "Uma vez detectados, deve-se proceder à pulverização com inseticidas recomendados. Medidas preventivas também podem ser adotadas, como a implantação de barreiras quebravento, rotação de culturas, eliminação de plantas daninhas e manejo adequado da cultura, dentre outras.",
           "pInfestação": "Março - outubro",
