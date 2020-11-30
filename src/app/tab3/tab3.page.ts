@@ -199,7 +199,7 @@ export class Tab3Page {
     }
   
   
-    this.http.post("http://127.0.0.1:5000/registros", postData, { headers: headers }).subscribe(res=> {
+    this.http.post("https://d16968c5384f.ngrok.io/registros", postData, { headers: headers }).subscribe(res=> {
       console.log(this.pagina);
     this.presentLoading('Aguarde, enviando e processando dados...');
     this.fgroup.reset();
