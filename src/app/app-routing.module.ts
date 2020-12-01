@@ -38,9 +38,18 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'duvidas',
+    loadChildren: () => import('./duvidas/duvidas.module').then( m => m.DuvidasPageModule)
+  },
+  {
+    path: 'politica-priv',
+    loadChildren: () => import('./politica-priv/politica-priv.module').then( m => m.PoliticaPrivPageModule)
   },
 
 

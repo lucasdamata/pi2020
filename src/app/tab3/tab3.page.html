@@ -17,11 +17,15 @@
       <ion-label position="floating">Funcionário:</ion-label>
       <ion-input type="text"  formControlName="funcionario"></ion-input>
     </ion-item>
-
     <ion-item>
+      <ion-label position="floating">Fazenda:</ion-label>
+      <ion-input type="text"  formControlName="fazenda"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item>
       <ion-label position="floating" >Fazenda:</ion-label>
       <ion-input type="text"  placeholder="código da fazenda" formControlName="fazenda"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item>
       <ion-label position="floating">Setor:</ion-label>
@@ -45,8 +49,8 @@
 
 
     <ion-item>
-      <ion-input type="text" [(ngModel)]="latitude" formControlName="latitude" >Lat: {{lat}}</ion-input>
-      <ion-input type="text" [(ngModel)]="longitude" formControlName="longitude">Lng: {{lng}}</ion-input>
+      <ion-input type="text" [(ngModel)]="latitude" formControlName="latitude" >Latitude: {{lat}}</ion-input>
+      <ion-input type="text" [(ngModel)]="longitude" formControlName="longitude">Longitude: {{lng}}</ion-input>
     </ion-item>
 
   </form>
@@ -56,12 +60,12 @@
     <ion-row>
       <ion-col>
         <ion-button color="success" expand="block" (click)="takePicture()">
-          <ion-icon name="camera-outline"></ion-icon>Câmera
+          <ion-icon name="camera-outline"></ion-icon>Enviar foto
         </ion-button>
       </ion-col>
       <ion-col>
         <ion-button color="success" expand="block" routerLink="/map">
-          <ion-icon name="location-sharp"></ion-icon>selecionar local
+          <ion-icon name="location-sharp"></ion-icon>Selecionar Local
         </ion-button>
       </ion-col>
 
