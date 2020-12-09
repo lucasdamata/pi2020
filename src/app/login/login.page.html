@@ -1,11 +1,51 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+<ion-header >
+  <ion-toolbar color="success" >
+    <ion-buttons slot="start">
+    </ion-buttons>
+    
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
-  teste
+<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="../../assets/js/main.js"></script>
+
+<ion-content>
+  <div class="container">
+
+    <div class="login-content">
+      <form action="index.html">
+        <img src="../../assets/images/icon.jpeg">
+        <h2 class="title">SIAGROTEC</h2>
+        <div class="input-div one">
+          <div class="i">
+            <ion-icon name="person-sharp"></ion-icon>
+          </div>
+          
+            <ion-item>
+              <ion-label position="floating"></ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+        
+        </div>
+        <div class="input-div pass">
+          <div class="i">
+            <ion-icon name="lock-closed-sharp"></ion-icon>
+          </div>
+          <div class="div">
+            <h5>Password</h5>
+            <input type="password" class="input">
+          </div>
+        </div>
+        <a href="#">Forgot Password?</a>
+        <ion-button class="btn" color="success" (click)="ir()">Entrar</ion-button>
+  
+      </form>
+    </div>
+  </div>
 
 </ion-content>

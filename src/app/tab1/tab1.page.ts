@@ -126,7 +126,6 @@ export class Tab1Page implements OnInit {
    
   }
 
-
 //fazendo um teste
 
 /* showDataReg(endpoint){
